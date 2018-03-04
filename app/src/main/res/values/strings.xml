@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">HomeMedicines</string>
+    <string name="app_name">App_Medicines</string>
+    <string name="username">Username</string>
+    <string name="Password">Password</string>
+    <string name="Sign_In">SignIn</string>
+    <string name="ForgotPassword">Forgot Password</string>
 </resources>
