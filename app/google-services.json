@@ -1,35 +1,35 @@
 {
   "project_info": {
-    "project_number": "687438737090",
-    "firebase_url": "https://homemedicines-c1b77.firebaseio.com",
-    "project_id": "homemedicines-c1b77",
-    "storage_bucket": "homemedicines-c1b77.appspot.com"
+    "project_number": "998628470403",
+    "firebase_url": "https://healthathome-238fa.firebaseio.com",
+    "project_id": "healthathome-238fa",
+    "storage_bucket": "healthathome-238fa.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:687438737090:android:e6cdf78251a88407",
+        "mobilesdk_app_id": "1:998628470403:android:e6cdf78251a88407",
         "android_client_info": {
           "package_name": "com.example.brayandavid.homemedicines"
         }
       },
       "oauth_client": [
         {
-          "client_id": "687438737090-qd14on8vqcah01md8crq3ou1hkrj15s7.apps.googleusercontent.com",
+          "client_id": "998628470403-dt6se2t5brslm23g1k6spg2d38mdopmm.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.brayandavid.homemedicines",
-            "certificate_hash": "b68ff550d9f7bef99781049a93a7b189651fc2a8"
+            "certificate_hash": "b554833f0479fe0037dfa18a99169c7c03206a4d"
           }
         },
         {
-          "client_id": "687438737090-7cbfkgmopflltlkkor6vekkrggm7kgle.apps.googleusercontent.com",
+          "client_id": "998628470403-cm2enovc8t0lspsda7939nubl0kk945a.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDDC89gJfB7aqeToMI_Ez5DmeW35TxTzyE"
+          "current_key": "AIzaSyBraEqSdzx8iREtsBNL50lO5cqsvmNMoSQ"
         }
       ],
       "services": {
@@ -40,7 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "687438737090-7cbfkgmopflltlkkor6vekkrggm7kgle.apps.googleusercontent.com",
+              "client_id": "998628470403-cm2enovc8t0lspsda7939nubl0kk945a.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

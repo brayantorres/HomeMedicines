@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Home-Medicines.iml" filepath="$PROJECT_DIR$/Home-Medicines.iml" />
-      <module fileurl="file://C:\Users\Personal\Documents\HOME\HomeMedicines\HomeMedicines.iml" filepath="C:\Users\Personal\Documents\HOME\HomeMedicines\HomeMedicines.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HomeMedicines-master-jhan.iml" filepath="$PROJECT_DIR$/HomeMedicines-master-jhan.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\Personal\Documents\HOME\HomeMedicines\app\app.iml" filepath="C:\Users\Personal\Documents\HOME\HomeMedicines\app\app.iml" />
     </modules>
   </component>
 </project>

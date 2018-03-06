@@ -1,57 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@mipmap/back_login"
+    android:orientation="vertical"
     android:padding="40dp">
 
-    <EditText
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:ems="10"
-        android:id="@+id/username"
-        android:drawableStart="@mipmap/account"
-        android:hint="@string/username"
-        android:layout_marginTop="170dp"
-        android:textColor="#FFF"
-        android:paddingRight="0dp"
-        android:drawablePadding="5dp"
-        android:textColorHint="#ffffff"/>
+        android:layout_height="508dp"
+        android:gravity="center"
+        android:orientation="horizontal">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:id="@+id/password"
-        android:drawableStart="@mipmap/lock"
-        android:hint="@string/Password"
-        android:layout_marginTop="10dp"
-        android:textColor="#FFF"
-        android:paddingRight="0dp"
-        android:drawablePadding="5dp"
-        android:textColorHint="#ffffff"/>
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/common_google_signin_btn_text_dark_default"
+            android:lineSpacingExtra="30sp"
+            android:onClick="btnLoginClick"
+            android:text="@string/Sign_In"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"
+            android:visibility="visible" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="@string/Sign_In"
-        android:id="@+id/button"
-        android:background="@drawable/selector_xml_btn_yellow"
-        android:layout_gravity="center_horizontal" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/ForgotPassword"
-        android:id="@+id/textView3"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="40dp"
-        android:textColor="#FFF"
-        />
+        <Button
+            android:id="@+id/btnRegistro"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimaryDark"
+            android:lineSpacingExtra="30sp"
+            android:onClick="btnRegistroClick"
+            android:text="RegistER"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
+            android:textStyle="bold"
+            android:visibility="visible" />
+    </LinearLayout>
 
 </LinearLayout>
