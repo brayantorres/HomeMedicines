@@ -1,32 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Personal\\Downloads\\HomeMedicines-master-jhan\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-w820dp-v13\\values-w820dp-v13.xml",
+            "outputFile": "C:\\Users\\Personal\\Documents\\HomeM\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-w820dp-v13\\values-w820dp-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Personal\\Downloads\\HomeMedicines-master-jhan\\app\\src\\main\\res\\values-w820dp\\dimens.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "4",
-                        "startOffsets": "291",
-                        "endColumns": "57",
-                        "endOffsets": "344"
-                    },
-                    "to": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "57",
-                        "endOffsets": "108"
-                    }
-                }
-            ]
-        },
-        {
-            "outputFile": "C:\\Users\\CAT\\Documents\\UNIVERSIDAD JHAN KEIN SIERRA\\Android-Programacion\\HomeMedicines-master\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-w820dp-v13\\values-w820dp-v13.xml",
-            "map": [
-                {
-                    "source": "C:\\Users\\CAT\\Documents\\UNIVERSIDAD JHAN KEIN SIERRA\\Android-Programacion\\HomeMedicines-master\\app\\src\\main\\res\\values-w820dp\\dimens.xml",
+                    "source": "C:\\Users\\Personal\\Documents\\HomeM\\app\\src\\main\\res\\values-w820dp\\dimens.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "4",

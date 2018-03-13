@@ -1,23 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\CAT\\Documents\\UNIVERSIDAD JHAN KEIN SIERRA\\Android-Programacion\\HomeMedicines-master\\app\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-v12\\values-v12.xml",
-            "map": [
-                {
-                    "source": "C:\\Users\\CAT\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\85e1314a16047d6c9b53ab753a25290a\\res\\values-v12\\values-v12.xml",
-                    "from": {
-                        "startLines": "2,5,8,9",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "55,279,479,598",
-                        "endLines": "4,7,8,9",
-                        "endColumns": "12,12,118,94",
-                        "endOffsets": "274,474,593,688"
-                    }
-                }
-            ]
-        },
-        {
-            "outputFile": "C:\\Users\\Personal\\Downloads\\HomeMedicines-master-jhan\\app\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-v12\\values-v12.xml",
+            "outputFile": "C:\\Users\\Personal\\Documents\\HomeM\\app\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-v12\\values-v12.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Personal\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\dee8effd1b456cc29dae78072d30da21\\res\\values-v12\\values-v12.xml",

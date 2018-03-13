@@ -1,4 +1,0 @@
-#Tue Mar 06 03:16:06 COT 2018
-base.0=C\:\\Users\\CAT\\Documents\\UNIVERSIDAD JHAN KEIN SIERRA\\Android-Programacion\\HomeMedicines-master\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\45
-path.0=classes.dex
-renamed.0=classes.dex
