@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.brayandavid.homemedicines.Objects.Product;
 import com.example.brayandavid.homemedicines.R;
 
 

@@ -4,8 +4,8 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.example.brayandavid.homemedicines.View.Category;
-import com.example.brayandavid.homemedicines.View.Product;
+import com.example.brayandavid.homemedicines.Objects.Category;
+import com.example.brayandavid.homemedicines.Objects.Product;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

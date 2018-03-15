@@ -1,6 +1,6 @@
 package com.example.brayandavid.homemedicines.View.dummy;
 
-import com.example.brayandavid.homemedicines.View.Product;
+import com.example.brayandavid.homemedicines.Objects.Product;
 
 import java.io.Serializable;
 import java.util.List;

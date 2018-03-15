@@ -1,10 +1,9 @@
 package com.example.brayandavid.homemedicines.Conection;
 
-import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.example.brayandavid.homemedicines.Usuario;
+import com.example.brayandavid.homemedicines.Objects.User;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -19,19 +18,14 @@ import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
 import cz.msebera.android.httpclient.util.EntityUtils;
 
 /**
- * Created by Kevin Ortiz on 14/03/2018.
+ * Created by Kevin Ortiz on 15/03/2018.
  */
-public class TaskUsers extends AsyncTask<String, Integer, List<Usuario>> {
 
-
-    private Context usersContext;
-
-    public TaskUsers(Context context) {
-        usersContext = context;
-    }
+public class TaskUserRegistry extends AsyncTask<String, String, List<User>>{
 
     @Override
-    protected List<Usuario> doInBackground(String... strings) {
+    protected List<User> doInBackground(String... strings) {
+
         HttpClient httpClient = new DefaultHttpClient();
         HttpGet del = new HttpGet("http://13.90.130.197/user");
         del.setHeader("content-type", "application/json");
@@ -42,16 +36,16 @@ public class TaskUsers extends AsyncTask<String, Integer, List<Usuario>> {
 
             JSONArray respJSON = new JSONArray(respStr);
 
-            List<Usuario> userList = new ArrayList<>();
+            List<User> userList = new ArrayList<>();
 
             for (int i = 0; i < respJSON.length(); i++) {
                 JSONObject obj = respJSON.getJSONObject(i);
 
-                Usuario user = new Usuario();
+                User user = new User();
                 user.setAge(obj.getInt("age"));
                 user.setName(obj.getString("name"));
                 user.setGender(obj.getString("gender"));
-                user.setLastname(obj.getString("lastname"));
+                user.setLasName(obj.getString("lastName"));
                 user.setType(obj.getString("type"));
                 user.setUser(obj.getString("user"));
                 user.setPassword(obj.getString("password"));
@@ -70,9 +64,9 @@ public class TaskUsers extends AsyncTask<String, Integer, List<Usuario>> {
 
 
     @Override
-    protected void onPostExecute(List<Usuario> usuarios) {
+    protected void onPostExecute(List<User> users) {
         try {
-            super.onPostExecute(usuarios);
+            super.onPostExecute(users);
         }catch (Exception e) {
             System.out.print(e.toString());
         }

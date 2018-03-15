@@ -1,4 +1,4 @@
-package com.example.brayandavid.homemedicines.View;
+package com.example.brayandavid.homemedicines.Objects;
 
 import java.io.Serializable;
 

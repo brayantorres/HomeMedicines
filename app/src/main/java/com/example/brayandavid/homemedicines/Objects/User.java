@@ -1,4 +1,4 @@
-package com.example.brayandavid.homemedicines;
+package com.example.brayandavid.homemedicines.Objects;
 
 import java.io.Serializable;
 
@@ -6,15 +6,16 @@ import java.io.Serializable;
  * Created by Kevin Ortiz on 13/03/2018.
  */
 
-public class Usuario implements Serializable{
+public class User implements Serializable{
     String user;
     String password;
     Integer age;
     String gender;
-    String lastname;
+    String lasName;
     String name;
     String type;
     String workingHours;
+
 
     public Integer getAge() {
         return age;
@@ -32,12 +33,12 @@ public class Usuario implements Serializable{
         this.gender = gender;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLasName() {
+        return lasName;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLasName(String lasName) {
+        this.lasName = lasName;
     }
 
     public String getName() {

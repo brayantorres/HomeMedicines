@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.brayandavid.homemedicines.Conection.TaskProducts;
+import com.example.brayandavid.homemedicines.Objects.Product;
 import com.example.brayandavid.homemedicines.R;
 
 import java.util.ArrayList;
