@@ -1,21 +1,21 @@
 package com.example.brayandavid.homemedicines;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.example.brayandavid.homemedicines.Conection.TaskLogin;
+import com.example.brayandavid.homemedicines.View.ServicesListActivity;
 
-import cz.msebera.android.httpclient.Header;
+import java.util.concurrent.ExecutionException;
 
 public class LoginUser extends AppCompatActivity {
     private EditText txtEmailLogin;
     private EditText txtPasswordLogin;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,21 +27,26 @@ public class LoginUser extends AppCompatActivity {
     }
 
     public void btn_Login_Click(View v) {
+
         final ProgressDialog progressDialog = ProgressDialog.show(LoginUser.this, "Espera", "Procesando", true);
+        TaskLogin logenTask = new TaskLogin();
+        Toast.makeText(this,"Triunfando papa", Toast.LENGTH_SHORT);
+        Login login = new Login();
+        login.setPassword((txtPasswordLogin.getText().toString()));
+        login.setUser(txtEmailLogin.getText().toString());
 
-        AsyncHttpClient client = new AsyncHttpClient();
-        client.setBasicAuth("user","password/token");
-        client.get("http://13.90.130.197/", new AsyncHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                Toast.makeText(LoginUser.this, (statusCode), Toast.LENGTH_SHORT).show();
-            }
+        try {
+           String resul = logenTask.execute(login).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
 
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                Toast.makeText(LoginUser.this, "No funcionó", Toast.LENGTH_SHORT).show();
-            }
-        });
+        int code = TaskLogin.getCode();
+        if (code==200){
+        Intent i = new Intent(LoginUser.this, ServicesListActivity.class);
+        startActivity(i);}
     }
 
 

@@ -11,16 +11,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
+
         </activity>
         <activity android:name=".Registro" />
-        <activity android:name=".LoginUser" />
+        <activity android:name=".LoginUser"></activity>
         <activity android:name=".ProfileActivity" />
         <activity
-            android:name=".View.ProductosActivity"
+            android:name=".View.ProductsActivity"
             android:label="@string/title_activity_productos"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".View.ServiciosListActivity"
+            android:name=".View.ServicesListActivity"
             android:label="@string/title_servicios_list"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -30,14 +31,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".View.ServiciosDetailActivity"
+            android:name=".View.ServicesDetailActivity"
             android:label="@string/title_servicios_detail"
-            android:parentActivityName=".View.ServiciosListActivity"
+            android:parentActivityName=".View.ServicesListActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.brayandavid.homemedicines.View.ServiciosListActivity" />
+                android:value="com.example.brayandavid.homemedicines.View.ServicesListActivity" />
         </activity>
     </application>
-
 </manifest>

@@ -1,10 +1,12 @@
 package com.example.brayandavid.homemedicines;
 
+import java.io.Serializable;
+
 /**
  * Created by Kevin Ortiz on 13/03/2018.
  */
 
-public class Usuario {
+public class Usuario implements Serializable{
     String user;
     String password;
     Integer age;

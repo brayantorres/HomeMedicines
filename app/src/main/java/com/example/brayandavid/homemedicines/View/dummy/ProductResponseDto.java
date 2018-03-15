@@ -1,6 +1,6 @@
 package com.example.brayandavid.homemedicines.View.dummy;
 
-import com.example.brayandavid.homemedicines.View.Producto;
+import com.example.brayandavid.homemedicines.View.Product;
 
 import java.io.Serializable;
 import java.util.List;
@@ -11,13 +11,13 @@ import java.util.List;
 
 public class ProductResponseDto implements Serializable {
 
-    private  List<Producto> productos;
+    private  List<Product> productos;
 
-    public List<Producto> getProductos() {
+    public List<Product> getProductos() {
         return productos;
     }
 
-    public void setProductos(List<Producto> productos) {
+    public void setProductos(List<Product> productos) {
         this.productos = productos;
     }
 }

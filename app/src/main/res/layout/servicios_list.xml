@@ -9,5 +9,5 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context="com.example.brayandavid.homemedicines.View.ServiciosListActivity"
+    tools:context="com.example.brayandavid.homemedicines.View.ServicesListActivity"
     tools:listitem="@layout/servicios_list_content" />
