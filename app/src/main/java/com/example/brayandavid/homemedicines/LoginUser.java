@@ -38,7 +38,8 @@ public class LoginUser extends AppCompatActivity {
         Login login = new Login();
         login.setPassword((txtPasswordLogin.getText().toString()));
         login.setUser(txtEmailLogin.getText().toString());
-
+        Intent i = new Intent(LoginUser.this, ChangePassword.class);
+        startActivity(i);
         try {
             String  resul = logenTask.execute(login).get();
         } catch (InterruptedException e) {
@@ -47,7 +48,7 @@ public class LoginUser extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        int code = TaskLogin.getCode();
+       /* int code = TaskLogin.getCode();
         if (code == 200) {
             Intent i = new Intent(LoginUser.this, ServicesListActivity.class);
             JSONObject token = new JSONObject(resul);
@@ -56,13 +57,12 @@ public class LoginUser extends AppCompatActivity {
         }
         if (code == 406) {
             Intent i = new Intent(LoginUser.this, ChangePassword.class);
-            JSONObject token = new JSONObject(resul);
+            //JSONObject token = new JSONObject(resul);
             Security.token = token.getString("token");
             startActivity(i);
         }
-
+*/
     }
-
 
 }
 

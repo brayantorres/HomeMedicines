@@ -5,6 +5,8 @@
     <string name="Sign_In">SignIn</string>
     <string name="ForgotPassword">Forgot Password</string>
     <string name="title_activity_productos">Productos</string>
+    <string name="Espera">Espera...</string>
+    <string name="Mensaje">Desea salir de la Aplicacion?</string>
     <string name="large_text">
         "Ejemplo.\n\n"
 

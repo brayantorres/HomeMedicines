@@ -11,6 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
+        </activity>
+        <activity android:name=".splashscreen" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Registro" />
-        <activity android:name=".LoginUser"></activity>
+        <activity android:name=".LoginUser" />
         <activity android:name=".ProfileActivity" />
         <activity
             android:name=".View.ProductsActivity"
@@ -27,8 +29,7 @@
         <activity
             android:name=".View.ServicesListActivity"
             android:label="@string/title_servicios_list"
-            android:theme="@style/AppTheme">
-        </activity>
+            android:theme="@style/AppTheme"></activity>
         <activity
             android:name=".View.ServicesDetailActivity"
             android:label="@string/title_servicios_detail"
@@ -39,4 +40,5 @@
                 android:value="com.example.brayandavid.homemedicines.View.ServicesListActivity" />
         </activity>
     </application>
+
 </manifest>
