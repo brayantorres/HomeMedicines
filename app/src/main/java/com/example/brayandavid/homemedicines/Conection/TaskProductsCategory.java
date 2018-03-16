@@ -23,18 +23,18 @@ import cz.msebera.android.httpclient.util.EntityUtils;
 /**
  * Created by Kevin Ortiz on 14/03/2018.
  */
-public class TaskProducts extends AsyncTask<String, Integer, List<Product>> {
+public class TaskProductsCategory extends AsyncTask<String, Integer, List<Product>> {
 
     private Context mContext;
 
-    public TaskProducts(Context context) {
+    public TaskProductsCategory(Context context) {
         mContext = context;
     }
 
     @Override
     protected List<Product> doInBackground(String... strings) {
         HttpClient httpClient = new DefaultHttpClient();
-        HttpGet del = new HttpGet("http://13.90.130.197/product");
+        HttpGet del = new HttpGet("http://13.90.130.197/product/category/");
         del.setHeader("content-type", "application/json");
         del.setHeader("Authorization", "Bearer " + Security.token);
         try {

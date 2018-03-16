@@ -1,12 +1,16 @@
 package com.example.brayandavid.homemedicines.View;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.brayandavid.homemedicines.Objects.Product;
@@ -39,7 +43,13 @@ public class ServicesDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.servicios_detail, container, false);
         if (mItem != null) {
+            byte[] decodedString = Base64.decode(mItem.getPhotos().get(0), Base64.DEFAULT);
+            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
             ((TextView) rootView.findViewById(R.id.servicios_detail)).setText(mItem.getDescription());
+            ((TextView) rootView.findViewById(R.id.servicios_detail)).setText(mItem.getMedicalCharacteristics());
+            ((TextView) rootView.findViewById(R.id.servicios_detail)).setText(mItem.getVolume());
+            ((ImageView) rootView.findViewById(R.id.servicios_detail)).setImageBitmap(decodedByte);
+
         }
         return rootView;
     }

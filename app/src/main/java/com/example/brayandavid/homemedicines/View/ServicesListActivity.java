@@ -2,11 +2,14 @@ package com.example.brayandavid.homemedicines.View;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -103,9 +106,12 @@ public class ServicesListActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
-            holder.mIdView.setImageResource(R.mipmap.ic_launcher);
+            byte[] decodedString = Base64.decode(mValues.get(position).getPhotos().get(0), Base64.DEFAULT);
+            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+            holder.mIdView.setImageBitmap(decodedByte);
             holder.mContentView.setText(mValues.get(position).getName());
             holder.mdetalleView.setText(mValues.get(position).getDescription());
+            holder.mdetalleView.setText(mValues.get(position).getMedicalCharacteristics());
             holder.itemView.setTag(mValues.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
         }
@@ -120,11 +126,13 @@ public class ServicesListActivity extends AppCompatActivity {
             final TextView mContentView;
             final TextView mdetalleView;
 
+
             ViewHolder(View view) {
                 super(view);
                 mIdView = (ImageView) view.findViewById(R.id.iv_avatar);
                 mContentView = (TextView) view.findViewById(R.id.ev_name);
                 mdetalleView = (TextView) view.findViewById(R.id.ev_txt);
+
             }
         }
     }
@@ -132,12 +140,6 @@ public class ServicesListActivity extends AppCompatActivity {
 
     public List<Product> getProductxxx() {
         List<Product> list = new ArrayList<>();
-        Product p = new Product();
-        p.setName("hola");
-        Product p1 = new Product();
-        p1.setName("como estas!");
-        list.add(p);
-        list.add(p1);
         return list;
     }
 }

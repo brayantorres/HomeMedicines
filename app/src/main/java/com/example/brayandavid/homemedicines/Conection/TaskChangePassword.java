@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.example.brayandavid.homemedicines.Objects.LoginChangePassword;
+import com.example.brayandavid.homemedicines.Security;
 
 import org.json.JSONObject;
 
@@ -25,18 +26,22 @@ public class TaskChangePassword extends AsyncTask<LoginChangePassword, Void, Str
 
     private Context loginCPContext;
 
+    public TaskChangePassword() {
+
+    }
+
     @Override
     protected String doInBackground(LoginChangePassword... loginChangePasswords) {
         {
             HttpClient httpClient = new DefaultHttpClient();
             HttpPost del = new HttpPost("http://13.90.130.197/login/change-password");
             del.setHeader("content-type", "application/json");
-            del.setHeader("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJncml0aWNvc3VhdmVAZ21haWwuY29tIiwiZXhwIjoxNTIxNjYzNjk1fQ.5cbhSSbmaFu9ILPuqy2P2WQYEe6BBTsZk3TnoGOwpwtECsc_IWtirXlZq0dv1enfE4nVeYuNmmSSY1ZYJFjU7A");
+            del.setHeader("Authorization", "Bearer " + Security.token);
             try {
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.put("user", loginChangePasswords[0].getUser());
-                jsonObject.put("password", loginChangePasswords[0].getOldPassword());
-                jsonObject.put("password", loginChangePasswords[0].getNewPassword());
+                jsonObject.put("oldpassword", loginChangePasswords[0].getOldPassword());
+                jsonObject.put("newpassword", loginChangePasswords[0].getNewPassword());
                 del.setEntity(new StringEntity(jsonObject.toString()));
                 HttpResponse resp = httpClient.execute(del);
                 String respStr = EntityUtils.toString(resp.getEntity());

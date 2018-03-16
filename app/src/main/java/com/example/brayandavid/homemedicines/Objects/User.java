@@ -9,7 +9,7 @@ import java.io.Serializable;
 public class User implements Serializable{
     String user;
     String password;
-    Integer age;
+    int age;
     String gender;
     String lasName;
     String name;
@@ -17,11 +17,11 @@ public class User implements Serializable{
     String workingHours;
 
 
-    public Integer getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(int age) {
         this.age = age;
     }
 

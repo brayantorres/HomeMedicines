@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import com.example.brayandavid.homemedicines.Objects.Login;
+import com.example.brayandavid.homemedicines.Security;
+
 import org.json.JSONObject;
 import cz.msebera.android.httpclient.HttpResponse;
 import cz.msebera.android.httpclient.client.HttpClient;
@@ -43,7 +45,7 @@ public class TaskLogin extends AsyncTask<Login, Void, String> {
             HttpClient httpClient = new DefaultHttpClient();
             HttpPost del = new HttpPost("http://13.90.130.197/login");
             del.setHeader("content-type", "application/json");
-            del.setHeader("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJncml0aWNvc3VhdmVAZ21haWwuY29tIiwiZXhwIjoxNTIxNjYzNjk1fQ.5cbhSSbmaFu9ILPuqy2P2WQYEe6BBTsZk3TnoGOwpwtECsc_IWtirXlZq0dv1enfE4nVeYuNmmSSY1ZYJFjU7A");
+            del.setHeader("Authorization", "Bearer " + Security.token);
             try {
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.put("user", logins[0].getUser());

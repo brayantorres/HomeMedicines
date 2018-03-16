@@ -15,6 +15,10 @@ public class LoginChangePassword {
         this.user = user;
     }
 
+    public LoginChangePassword() {
+
+    }
+
     public String getNewPassword() {
         return newPassword;
     }

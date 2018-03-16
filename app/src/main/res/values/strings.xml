@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">App_Medicines</string>
+    <string name="app_name">Health at Home</string>
     <string name="username">Username</string>
     <string name="Password">Password</string>
     <string name="Sign_In">SignIn</string>

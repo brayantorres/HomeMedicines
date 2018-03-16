@@ -14,7 +14,5 @@ public class ProductsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_productos);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        ;
     }
 }
