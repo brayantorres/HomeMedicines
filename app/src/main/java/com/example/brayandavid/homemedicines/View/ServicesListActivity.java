@@ -2,14 +2,11 @@ package com.example.brayandavid.homemedicines.View;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -106,9 +103,10 @@ public class ServicesListActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
-            byte[] decodedString = Base64.decode(mValues.get(position).getPhotos().get(0), Base64.DEFAULT);
+           /*byte[] decodedString = Base64.decode(mValues.get(position).getPhotos().get(0), Base64.DEFAULT);
             Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-            holder.mIdView.setImageBitmap(decodedByte);
+            holder.mIdView.setImageBitmap(decodedByte);*/
+
             holder.mContentView.setText(mValues.get(position).getName());
             holder.mdetalleView.setText(mValues.get(position).getDescription());
             holder.mdetalleView.setText(mValues.get(position).getMedicalCharacteristics());

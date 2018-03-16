@@ -18,7 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Registro" />
-        <activity android:name=".LoginUser"></activity>
+        <activity android:name=".LoginUser" />
         <activity android:name=".ProfileActivity" />
         <activity
             android:name=".View.ProductsActivity"
@@ -27,8 +27,7 @@
         <activity
             android:name=".View.ServicesListActivity"
             android:label="@string/title_servicios_list"
-            android:theme="@style/AppTheme">
-        </activity>
+            android:theme="@style/AppTheme"></activity>
         <activity
             android:name=".View.ServicesDetailActivity"
             android:label="@string/title_servicios_detail"
@@ -38,5 +37,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.brayandavid.homemedicines.View.ServicesListActivity" />
         </activity>
+        <activity android:name=".PasswordChange"></activity>
     </application>
+
 </manifest>
