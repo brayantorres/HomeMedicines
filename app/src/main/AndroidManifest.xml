@@ -39,6 +39,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.brayandavid.homemedicines.View.ServicesListActivity" />
         </activity>
+        <activity android:name=".PasswordChange"></activity>
     </application>
 
 </manifest>

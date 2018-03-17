@@ -6,7 +6,6 @@ import android.util.Log;
 
 import com.example.brayandavid.homemedicines.Objects.Category;
 import com.example.brayandavid.homemedicines.Objects.Product;
-import com.example.brayandavid.homemedicines.Security;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -36,7 +35,7 @@ public class TaskProducts extends AsyncTask<String, Integer, List<Product>> {
         HttpClient httpClient = new DefaultHttpClient();
         HttpGet del = new HttpGet("http://13.90.130.197/product");
         del.setHeader("content-type", "application/json");
-        del.setHeader("Authorization", "Bearer " + Security.token);
+        del.setHeader("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJncml0aWNvc3VhdmVAZ21haWwuY29tIiwiZXhwIjoxNTIxNjYzNjk1fQ.5cbhSSbmaFu9ILPuqy2P2WQYEe6BBTsZk3TnoGOwpwtECsc_IWtirXlZq0dv1enfE4nVeYuNmmSSY1ZYJFjU7A");
         try {
             HttpResponse resp = httpClient.execute(del);
             String respStr = EntityUtils.toString(resp.getEntity());

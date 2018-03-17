@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://C:\Users\brayandavid\Documents\HomeMedicines\HomeM.iml" filepath="C:\Users\brayandavid\Documents\HomeMedicines\HomeM.iml" />
       <module fileurl="file://$PROJECT_DIR$/HomeMedicines.iml" filepath="$PROJECT_DIR$/HomeMedicines.iml" />
-      <module fileurl="file://C:\Users\Personal\Documents\HomeM\HomeMedicines-master-jhan.iml" filepath="C:\Users\Personal\Documents\HomeM\HomeMedicines-master-jhan.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

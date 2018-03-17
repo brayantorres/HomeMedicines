@@ -10,11 +10,9 @@ import android.widget.EditText;
 
 import com.example.brayandavid.homemedicines.Conection.TaskLogin;
 import com.example.brayandavid.homemedicines.Objects.Login;
-import com.example.brayandavid.homemedicines.View.ChangePassword;
 import com.example.brayandavid.homemedicines.View.ServicesListActivity;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.concurrent.ExecutionException;
 
@@ -33,12 +31,11 @@ public class LoginUser extends AppCompatActivity {
     }
 
     public void btn_Login_Click(View v) throws JSONException {
-        final ProgressDialog progressDialog = ProgressDialog.show(LoginUser.this, "Espera...", "Validando Usuario", false);
         TaskLogin logenTask = new TaskLogin();
         Login login = new Login();
         login.setPassword((txtPasswordLogin.getText().toString()));
         login.setUser(txtEmailLogin.getText().toString());
-        Intent i = new Intent(LoginUser.this, ChangePassword.class);
+        Intent i = new Intent(LoginUser.this, PasswordChange.class);
         startActivity(i);
         try {
             String  resul = logenTask.execute(login).get();
@@ -48,20 +45,18 @@ public class LoginUser extends AppCompatActivity {
             e.printStackTrace();
         }
 
-       /* int code = TaskLogin.getCode();
+        int code = TaskLogin.getCode();
         if (code == 200) {
-            Intent i = new Intent(LoginUser.this, ServicesListActivity.class);
-            JSONObject token = new JSONObject(resul);
-            Security.token = token.getString("token");
-            startActivity(i);
+            Intent h = new Intent(LoginUser.this, ServicesListActivity.class);
+
+            startActivity(h);
         }
         if (code == 406) {
-            Intent i = new Intent(LoginUser.this, ChangePassword.class);
-            //JSONObject token = new JSONObject(resul);
-            Security.token = token.getString("token");
-            startActivity(i);
+            Intent j = new Intent(LoginUser.this, PasswordChange.class);
+
+            startActivity(j);
         }
-*/
+
     }
 
 }
