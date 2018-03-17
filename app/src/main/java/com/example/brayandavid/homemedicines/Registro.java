@@ -67,10 +67,12 @@ public class Registro extends AppCompatActivity {
             progressDialog = ProgressDialog.show(this, "Congratulations", "Registro exitoso, ahora puedes ingresar",false );
             Intent i = new Intent(Registro.this, LoginUser.class);
             startActivity(i);
+            finish();
         }else {
             progressDialog = ProgressDialog.show(this, "Error", "Algo salió mal, por favor vuelve a intentar", false);
             Intent i = new Intent(Registro.this, Registro.class);
             startActivity(i);
+            finish();
         }
     }
 

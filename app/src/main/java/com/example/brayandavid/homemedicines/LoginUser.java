@@ -52,7 +52,7 @@ public class LoginUser extends AppCompatActivity {
             startActivity(h);
         }
         if (code == 406) {
-            Intent j = new Intent(LoginUser.this, PasswordChange.class);
+            Intent j = new Intent(LoginUser.this, ServicesListActivity.class);
 
             startActivity(j);
         }
