@@ -43,9 +43,11 @@ public class PasswordChange extends AppCompatActivity {
         if (code == 200 || code == 201) {
             Intent i = new Intent(this, LoginUser.class);
             startActivity(i);
+            finish();
         }else{
             Intent i = new Intent(this, MainActivity.class);
             startActivity(i);
+            finish();
         }
     }
 }
