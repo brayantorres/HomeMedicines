@@ -1,5 +1,7 @@
 package com.example.brayandavid.homemedicines.Objects;
 
+import android.graphics.Bitmap;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -18,6 +20,23 @@ public class Product implements Serializable{
     private String platform = null;
     private Category category = null;
     private double eachPrice;
+    private Bitmap image;
+
+    public String getMedical_characteristics() {
+        return medical_characteristics;
+    }
+
+    public void setMedical_characteristics(String medical_characteristics) {
+        this.medical_characteristics = medical_characteristics;
+    }
+
+    public Bitmap getImage() {
+        return image;
+    }
+
+    public void setImage(Bitmap image) {
+        this.image = image;
+    }
 
     public String getId() {
         return id;

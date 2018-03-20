@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.brayandavid.homemedicines.Conection.TaskImages;
 import com.example.brayandavid.homemedicines.Conection.TaskProducts;
 import com.example.brayandavid.homemedicines.Objects.Product;
 import com.example.brayandavid.homemedicines.R;
@@ -103,14 +104,12 @@ public class ServicesListActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
-           /*byte[] decodedString = Base64.decode(mValues.get(position).getPhotos().get(0), Base64.DEFAULT);
-            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-            holder.mIdView.setImageBitmap(decodedByte);*/
-            holder.mIdView.setImageResource(R.mipmap.ic_launcher_round);
-            holder.mContentView.setText(mValues.get(position).getName());
-            holder.mdetalleView.setText(mValues.get(position).getDescription());
-            holder.mdetalleView.setText(mValues.get(position).getMedicalCharacteristics());
-            holder.itemView.setTag(mValues.get(position));
+            Product product = mValues.get(position);
+            TaskImages taskImages = new TaskImages(holder.mIdView);
+            taskImages.execute(product);
+            holder.mContentView.setText(product.getName());
+            holder.mdetalleView.setText(product.getDescription());
+            holder.itemView.setTag(product);
             holder.itemView.setOnClickListener(mOnClickListener);
         }
 

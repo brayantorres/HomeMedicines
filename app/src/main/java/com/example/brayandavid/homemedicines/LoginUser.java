@@ -1,6 +1,5 @@
 package com.example.brayandavid.homemedicines;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +12,7 @@ import com.example.brayandavid.homemedicines.Objects.Login;
 import com.example.brayandavid.homemedicines.View.ServicesListActivity;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.concurrent.ExecutionException;
 
@@ -23,6 +23,8 @@ public class LoginUser extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Security.getToken() != null)
+            startActivity(new Intent(LoginUser.this, ServicesListActivity.class));
         setContentView(R.layout.activity_login_user);
         txtEmailLogin = (EditText) findViewById(R.id.txt_email_login);
         txtPasswordLogin = (EditText) findViewById(R.id.txt_pass_login);
@@ -37,8 +39,9 @@ public class LoginUser extends AppCompatActivity {
         login.setUser(txtEmailLogin.getText().toString());
         Intent i = new Intent(LoginUser.this, PasswordChange.class);
         startActivity(i);
+        String  resul = null;
         try {
-            String  resul = logenTask.execute(login).get();
+            resul = logenTask.execute(login).get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -48,11 +51,12 @@ public class LoginUser extends AppCompatActivity {
         int code = TaskLogin.getCode();
         if (code == 200) {
             Intent h = new Intent(LoginUser.this, ServicesListActivity.class);
-
+            JSONObject token = new JSONObject(resul);
+            Security.setToken("Bearer " + token.getString("token"));
             startActivity(h);
         }
         if (code == 406) {
-            Intent j = new Intent(LoginUser.this, ServicesListActivity.class);
+            Intent j = new Intent(LoginUser.this, PasswordChange.class);
 
             startActivity(j);
         }

@@ -5,8 +5,8 @@ package com.example.brayandavid.homemedicines;
  */
 
 public class Security {
-    public Security() {
-    }
+
+    private static String token;
 
     public static String getToken() {
         return token;
@@ -16,5 +16,4 @@ public class Security {
         Security.token = token;
     }
 
-    public static String token;
 }

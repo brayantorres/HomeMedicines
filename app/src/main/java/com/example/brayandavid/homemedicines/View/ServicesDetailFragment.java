@@ -7,8 +7,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.brayandavid.homemedicines.Conection.TaskImages;
 import com.example.brayandavid.homemedicines.Objects.Product;
 import com.example.brayandavid.homemedicines.R;
 
@@ -30,6 +32,8 @@ public class ServicesDetailFragment extends Fragment {
             mItem = (Product) getArguments().getSerializable(ARG_ITEM_ID);
             if (appBarLayout != null && mItem != null) {
                 appBarLayout.setTitle(mItem.getName());
+                TaskImages taskImages = new TaskImages((ImageView) activity.findViewById(R.id.image_details));
+                taskImages.execute(mItem);
             }
         }
     }
@@ -39,7 +43,6 @@ public class ServicesDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.servicios_detail, container, false);
         if (mItem != null) {
-            ((TextView) rootView.findViewById(R.id.servicios_detail)).setText(mItem.getDescription());
             ((TextView) rootView.findViewById(R.id.servicios_detail)).setText(mItem.getMedicalCharacteristics());
         }
         return rootView;

@@ -36,7 +36,7 @@ public class TaskProductsName extends AsyncTask<String, Integer, List<Product>> 
         HttpClient httpClient = new DefaultHttpClient();
         HttpGet del = new HttpGet("http://13.90.130.197/product/name/");
         del.setHeader("content-type", "application/json");
-        del.setHeader("Authorization", "Bearer " + Security.token);
+        del.setHeader("Authorization", Security.getToken());
         try {
             HttpResponse resp = httpClient.execute(del);
             String respStr = EntityUtils.toString(resp.getEntity());

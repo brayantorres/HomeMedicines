@@ -64,12 +64,12 @@ public class Registro extends AppCompatActivity {
 
         int code = TaskUserRegistry.getCode();
         if (code == 200) {
-            progressDialog = ProgressDialog.show(this, "Congratulations", "Registro exitoso, ahora puedes ingresar",false );
+            //progressDialog = ProgressDialog.show(this, "Congratulations", "Registro exitoso, ahora puedes ingresar",false );
             Intent i = new Intent(Registro.this, ServicesListActivity.class);
             startActivity(i);
             finish();
         }else {
-            progressDialog = ProgressDialog.show(this, "Error", "Algo salió mal, por favor vuelve a intentar", false);
+           // progressDialog = ProgressDialog.show(this, "Error", "Algo salió mal, por favor vuelve a intentar", false);
             Intent i = new Intent(Registro.this, Registro.class);
             startActivity(i);
             finish();

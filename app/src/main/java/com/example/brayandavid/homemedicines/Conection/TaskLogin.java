@@ -46,7 +46,7 @@ public class TaskLogin extends AsyncTask<Login, Void, String> {
             HttpClient httpClient = new DefaultHttpClient();
             HttpPost del = new HttpPost("http://13.90.130.197/login");
             del.setHeader("content-type", "application/json");
-            del.setHeader("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJncml0aWNvc3VhdmVAZ21haWwuY29tIiwiZXhwIjoxNTIxNjYzNjk1fQ.5cbhSSbmaFu9ILPuqy2P2WQYEe6BBTsZk3TnoGOwpwtECsc_IWtirXlZq0dv1enfE4nVeYuNmmSSY1ZYJFjU7A");
+            //del.setHeader("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJncml0aWNvc3VhdmVAZ21haWwuY29tIiwiZXhwIjoxNTIxNjYzNjk1fQ.5cbhSSbmaFu9ILPuqy2P2WQYEe6BBTsZk3TnoGOwpwtECsc_IWtirXlZq0dv1enfE4nVeYuNmmSSY1ZYJFjU7A");
             try {
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.put("user", logins[0].getUser());
@@ -55,7 +55,6 @@ public class TaskLogin extends AsyncTask<Login, Void, String> {
                 HttpResponse resp = httpClient.execute(del);
                 String respStr = EntityUtils.toString(resp.getEntity());
                 code = resp.getStatusLine().getStatusCode();
-
                 return respStr;
 
             } catch (Exception ex) {

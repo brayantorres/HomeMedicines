@@ -2,7 +2,7 @@
     <string name="app_name">Health at Home</string>
     <string name="username">Username</string>
     <string name="Password">Password</string>
-    <string name="Sign_In">SignIn</string>
+    <string name="Sign_In">Sign In</string>
     <string name="ForgotPassword">Forgot Password</string>
     <string name="title_activity_productos">Productos</string>
     <string name="Espera">Espera...</string>
