@@ -36,9 +36,8 @@ public class TaskProducts extends AsyncTask<String, Integer, List<Product>> {
         HttpClient httpClient = new DefaultHttpClient();
         HttpGet del = new HttpGet("http://13.90.130.197/product");
         del.setHeader("content-type", "application/json");
-        //del.setHeader("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJncml0aWNvc3VhdmVAZ21haWwuY29tIiwiZXhwIjoxNTIxNjYzNjk1fQ.5cbhSSbmaFu9ILPuqy2P2WQYEe6BBTsZk3TnoGOwpwtECsc_IWtirXlZq0dv1enfE4nVeYuNmmSSY1ZYJFjU7A");
         del.setHeader("Authorization", Security.getToken());
-        System.out.println(Security.getToken());
+
         try {
             HttpResponse resp = httpClient.execute(del);
             String respStr = EntityUtils.toString(resp.getEntity());
@@ -58,12 +57,12 @@ public class TaskProducts extends AsyncTask<String, Integer, List<Product>> {
                 product.setMedicalCharacteristics(obj.getString("medical_characteristics"));
                 product.setVolume(obj.getString("volume"));
 
-                List<String> phothos = new ArrayList<>();
+              /*  List<String> phothos = new ArrayList<>();
                 JSONArray photosJson = obj.getJSONArray("photos");
                 for (int j = 0; j < photosJson.length(); j++)
                     phothos.add(photosJson.getString(j));
 
-                product.setPhotos(phothos);
+                product.setPhotos(phothos);*/
 
                 JSONObject categoryJson = obj.getJSONObject("category");
                 Category category = new Category();

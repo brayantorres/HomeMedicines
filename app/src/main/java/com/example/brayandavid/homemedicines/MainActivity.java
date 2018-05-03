@@ -4,15 +4,11 @@ package com.example.brayandavid.homemedicines;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.EditText;
-
-import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
-private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +36,7 @@ private FirebaseAuth mAuth;
         builder.setPositiveButton("SI", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                finish();
+               finishAffinity();
             }
         });
         builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {

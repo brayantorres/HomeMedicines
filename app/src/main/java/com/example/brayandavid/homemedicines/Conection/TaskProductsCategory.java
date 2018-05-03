@@ -56,12 +56,6 @@ public class TaskProductsCategory extends AsyncTask<String, Integer, List<Produc
                 product.setMedicalCharacteristics(obj.getString("medical_characteristics"));
                 product.setVolume(obj.getString("volume"));
 
-                List<String> phothos = new ArrayList<>();
-                JSONArray photosJson = obj.getJSONArray("photos");
-                for (int j = 0; j < photosJson.length(); j++)
-                    phothos.add(photosJson.getString(j));
-
-                product.setPhotos(phothos);
 
                 JSONObject categoryJson = obj.getJSONObject("category");
                 Category category = new Category();

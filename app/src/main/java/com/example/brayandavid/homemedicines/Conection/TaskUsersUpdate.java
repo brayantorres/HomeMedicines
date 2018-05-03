@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.example.brayandavid.homemedicines.Objects.User;
+import com.example.brayandavid.homemedicines.Security;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -35,7 +36,7 @@ public class TaskUsersUpdate extends AsyncTask<String, Integer, List<User>> {
         HttpClient httpClient = new DefaultHttpClient();
         HttpGet del = new HttpGet("http://13.90.130.197/user");
         del.setHeader("content-type", "application/json");
-
+        del.setHeader("Authorization", Security.getToken());
         try {
             HttpResponse resp = httpClient.execute(del);
             String respStr = EntityUtils.toString(resp.getEntity());

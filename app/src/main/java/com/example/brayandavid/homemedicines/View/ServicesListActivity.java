@@ -1,6 +1,8 @@
 package com.example.brayandavid.homemedicines.View;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -15,6 +17,7 @@ import android.widget.TextView;
 
 import com.example.brayandavid.homemedicines.Conection.TaskImages;
 import com.example.brayandavid.homemedicines.Conection.TaskProducts;
+import com.example.brayandavid.homemedicines.MainActivity;
 import com.example.brayandavid.homemedicines.Objects.Product;
 import com.example.brayandavid.homemedicines.R;
 
@@ -135,8 +138,30 @@ public class ServicesListActivity extends AppCompatActivity {
     }
 
 
+
     public List<Product> getProductxxx() {
         List<Product> list = new ArrayList<>();
         return list;
+    }
+    public void onBackPressed(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.Espera);
+        builder.setIcon(R.mipmap.ic_launcher);
+        builder.setMessage(R.string.Mensaje2);
+        builder.setPositiveButton("SI", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent regress = new Intent(ServicesListActivity.this, MainActivity.class);
+                startActivity(regress);
+            }
+        });
+        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

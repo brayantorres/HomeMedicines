@@ -1,15 +1,14 @@
 package com.example.brayandavid.homemedicines;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.brayandavid.homemedicines.Conection.TaskUserRegistry;
 import com.example.brayandavid.homemedicines.Objects.User;
-import com.example.brayandavid.homemedicines.View.ServicesListActivity;
 
 import java.util.concurrent.ExecutionException;
 
@@ -40,9 +39,6 @@ public class Registro extends AppCompatActivity {
     }
 
     public void btn_Registro_Click(View v) {
-
-        ProgressDialog progressDialog = ProgressDialog.show(Registro.this, "Espera", "Processing...", false);
-        progressDialog.dismiss();
         TaskUserRegistry usersRegistry = new TaskUserRegistry();
         User userRegistry = new User();
         userRegistry.setAge(age.getId());
@@ -64,15 +60,15 @@ public class Registro extends AppCompatActivity {
 
         int code = TaskUserRegistry.getCode();
         if (code == 200) {
-            //progressDialog = ProgressDialog.show(this, "Congratulations", "Registro exitoso, ahora puedes ingresar",false );
-            Intent i = new Intent(Registro.this, ServicesListActivity.class);
+            Toast.makeText(this, "User created successfully, please login",
+                    Toast.LENGTH_LONG).show();
+            Intent i = new Intent(Registro.this, LoginUser.class);
             startActivity(i);
-            finish();
         }else {
-           // progressDialog = ProgressDialog.show(this, "Error", "Algo salió mal, por favor vuelve a intentar", false);
+            Toast.makeText(this, "Something was wrong, try again "+ code,
+                    Toast.LENGTH_LONG).show();
             Intent i = new Intent(Registro.this, Registro.class);
             startActivity(i);
-            finish();
         }
     }
 

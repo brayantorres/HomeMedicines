@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.brayandavid.homemedicines.Conection.TaskLogin;
 import com.example.brayandavid.homemedicines.Objects.Login;
@@ -13,8 +14,6 @@ import com.example.brayandavid.homemedicines.View.ServicesListActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.concurrent.ExecutionException;
 
 public class LoginUser extends AppCompatActivity {
     private EditText txtEmailLogin;
@@ -29,6 +28,8 @@ public class LoginUser extends AppCompatActivity {
         txtEmailLogin = (EditText) findViewById(R.id.txt_email_login);
         txtPasswordLogin = (EditText) findViewById(R.id.txt_pass_login);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarlogin);
+        txtEmailLogin.getText().clear();
+        txtPasswordLogin.getText().clear();
         setSupportActionBar(toolbar);
     }
 
@@ -37,18 +38,15 @@ public class LoginUser extends AppCompatActivity {
         Login login = new Login();
         login.setPassword((txtPasswordLogin.getText().toString()));
         login.setUser(txtEmailLogin.getText().toString());
-        Intent i = new Intent(LoginUser.this, PasswordChange.class);
-        startActivity(i);
+        int code = TaskLogin.getCode();
         String  resul = null;
         try {
             resul = logenTask.execute(login).get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
-        int code = TaskLogin.getCode();
+
         if (code == 200) {
             Intent h = new Intent(LoginUser.this, ServicesListActivity.class);
             JSONObject token = new JSONObject(resul);
@@ -57,8 +55,13 @@ public class LoginUser extends AppCompatActivity {
         }
         if (code == 406) {
             Intent j = new Intent(LoginUser.this, PasswordChange.class);
-
             startActivity(j);
+        }
+        if (code == 401) {
+            Toast.makeText(LoginUser.this, " Wait ¡Password or user incorrect!", Toast.LENGTH_LONG);
+        }
+        if (code == 403) {
+            Toast.makeText(LoginUser.this, " ¡Access denegate! ", Toast.LENGTH_LONG);
         }
 
     }

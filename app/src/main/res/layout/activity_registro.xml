@@ -31,7 +31,7 @@
                 android:id="@+id/txtuser"
                 android:layout_width="match_parent"
                 android:layout_height="69dp"
-                android:hint="Ingresa acá su usuario(Email)"
+                android:hint="@string/ingresa_ac_su_usuario_email"
                 android:inputType="textEmailAddress"
                 android:textStyle="bold"/>
 
