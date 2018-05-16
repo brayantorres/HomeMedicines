@@ -21,4 +21,11 @@
     <string name="title_servicios_list">Productos</string>
     <string name="title_servicios_detail">Servicios Detail</string>
     <string name="ingresa_ac_su_usuario_email">Ingresa su Correo</string>
+    <string name="title_activity_search">SearchActivity</string>
+
+    <string name="action_help">Help</string>
+    <string name="action_about">About</string>
+    <string name="action_search">search</string>
+    <string name="search">Search Demo</string>
+    <string name="submitted">submitted</string>
 </resources>
