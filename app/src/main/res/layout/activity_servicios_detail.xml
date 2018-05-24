@@ -39,12 +39,43 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v4.widget.NestedScrollView
-        android:id="@+id/servicios_detail_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical"
+       android:id="@+id/activitydetalle"
+       android:layout_marginTop="250dp">
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="descripcion"
+           android:id="@+id/description"
+           android:textSize="20dp"/>
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="caracteristicas"
+           android:id="@+id/caracteristicas"
+           android:textSize="20dp"/>
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="categoria"
+           android:id="@+id/categoria"
+           android:textSize="20dp"/>
+       <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="precio"
+       android:id="@+id/precio"
+       android:textSize="20dp"/>
+       <Button
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="25dp"
+           android:text="Agregar"/>
 
 
 
+   </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

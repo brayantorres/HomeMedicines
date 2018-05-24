@@ -11,13 +11,17 @@ public class Creditcard {
     String number;
     String securityCode;
     String paymentMethod;
+    shippingAddress  shippingAddress;
 
-    public Creditcard(String expirationDate, String name, String number, String securityCode, String paymentMethod) {
-        this.expirationDate = expirationDate;
-        this.name = name;
-        this.number = number;
-        this.securityCode = securityCode;
-        this.paymentMethod = paymentMethod;
+    public Creditcard() {
+    }
+
+    public com.example.brayandavid.homemedicines.Objects.shippingAddress getShippingAddress() {
+        return shippingAddress;
+    }
+
+    public void setShippingAddress(com.example.brayandavid.homemedicines.Objects.shippingAddress shippingAddress) {
+        this.shippingAddress = shippingAddress;
     }
 
     public String getExpirationDate() {

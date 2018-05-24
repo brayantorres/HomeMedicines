@@ -19,7 +19,6 @@ public class ServicesDetailFragment extends Fragment {
 
     public static final String ARG_ITEM_ID = "producto";
     private Product mItem;
-
     public ServicesDetailFragment() {
     }
 
@@ -32,6 +31,7 @@ public class ServicesDetailFragment extends Fragment {
             mItem = (Product) getArguments().getSerializable(ARG_ITEM_ID);
             if (appBarLayout != null && mItem != null) {
                 appBarLayout.setTitle(mItem.getName());
+
                 TaskImages taskImages = new TaskImages((ImageView) activity.findViewById(R.id.image_details));
                 taskImages.execute(mItem);
             }
@@ -42,6 +42,7 @@ public class ServicesDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.servicios_detail, container, false);
+
         if (mItem != null) {
             ((TextView) rootView.findViewById(R.id.servicios_detail)).setText(mItem.getMedicalCharacteristics());
         }

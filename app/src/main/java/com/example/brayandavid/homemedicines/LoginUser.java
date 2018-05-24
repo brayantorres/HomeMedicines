@@ -50,6 +50,8 @@ public class LoginUser extends AppCompatActivity {
         if (code == 200) {
             Intent h = new Intent(LoginUser.this, ServicesListActivity.class);
             JSONObject token = new JSONObject(resul);
+            Toast.makeText(this, "¡Login Successful! "+ code,
+                    Toast.LENGTH_LONG).show();
             Security.setToken("Bearer " + token.getString("token"));
             startActivity(h);
         }
@@ -58,10 +60,10 @@ public class LoginUser extends AppCompatActivity {
             startActivity(j);
         }
         if (code == 401) {
-            Toast.makeText(LoginUser.this, " Wait ¡Password or user incorrect!", Toast.LENGTH_LONG);
+            Toast.makeText(LoginUser.this, " Wait ¡Password or user incorrect!", Toast.LENGTH_LONG).show();
         }
         if (code == 403) {
-            Toast.makeText(LoginUser.this, " ¡Access denegate! ", Toast.LENGTH_LONG);
+            Toast.makeText(LoginUser.this, " ¡Access denegate! ", Toast.LENGTH_LONG).show();
         }
 
     }

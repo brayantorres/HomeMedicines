@@ -6,18 +6,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,16 +26,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ServicesListActivity extends AppCompatActivity {
-
-    TextView textView;
     private boolean mTwoPane;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_servicios_list);
-
-        textView = (TextView) findViewById(R.id.textViewSearch);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
@@ -118,8 +109,9 @@ public class ServicesListActivity extends AppCompatActivity {
             Product product = mValues.get(position);
             TaskImages taskImages = new TaskImages(holder.mIdView);
             taskImages.execute(product);
-            holder.mContentView.setText(product.getName());
-            holder.mdetalleView.setText(product.getDescription());
+            holder.titulo.setText(product.getName());
+            holder.mContentView.setText(product.getDescription());
+            holder.mdetalleView.setText(product.getVolume());
             holder.itemView.setTag(product);
             holder.itemView.setOnClickListener(mOnClickListener);
         }
@@ -133,59 +125,21 @@ public class ServicesListActivity extends AppCompatActivity {
             final ImageView mIdView;
             final TextView mContentView;
             final TextView mdetalleView;
-
+            final TextView titulo;
 
             ViewHolder(View view) {
                 super(view);
                 mIdView = (ImageView) view.findViewById(R.id.iv_avatar);
                 mContentView = (TextView) view.findViewById(R.id.ev_name);
                 mdetalleView = (TextView) view.findViewById(R.id.ev_txt);
-
+                titulo = (TextView) view.findViewById(R.id.tvTitulo);
             }
         }
     }
 
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_activity_menu, menu);
-        final MenuItem searchItem = menu.findItem(R.id.action_search);
-        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-        searchView.setQueryHint(getText(R.string.search));
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
 
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                Toast.makeText(ServicesListActivity.this, R.string.submitted, Toast.LENGTH_SHORT).show();
-                searchView.setQuery("", false);
-                searchView.setIconified(true);
-                return true;
-            }
 
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                textView.setText(newText);
-                return true;
-            }
-        });
 
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    public boolean OnOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_settings:
-                action(R.string.action_settings);
-                return true;
-            case R.id.action_help:
-                action(R.string.action_help);
-                return true;
-            case R.string.action_about:
-                action(R.string.action_about);
-                return true;
-                default:
-                    return super.onOptionsItemSelected(item);
-        }
-    }
 
     private void action(int resid) {
         Toast.makeText(this, getText(resid), Toast.LENGTH_SHORT).show();

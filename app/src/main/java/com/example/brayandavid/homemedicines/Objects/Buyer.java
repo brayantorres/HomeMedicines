@@ -4,20 +4,25 @@ package com.example.brayandavid.homemedicines.Objects;
  * Created by brayandavid on 20/05/2018.
  */
 
-public class Compra {
+public class Buyer {
 
     String contactPhone;
-    String dniNumber;
+    int dniNumber;
     String emailAddress;
     String fullName;
     String merchantBuyerId;
+    shippingAddress shippingAddress;
 
-    public Compra(String contactPhone, String dniNumbre, String emailAddress, String fullName, String merchantBuyerId) {
-        this.contactPhone = contactPhone;
-        this.dniNumber = dniNumbre;
-        this.emailAddress = emailAddress;
-        this.fullName = fullName;
-        this.merchantBuyerId = merchantBuyerId;
+    public Buyer() {
+
+    }
+
+    public com.example.brayandavid.homemedicines.Objects.shippingAddress getShippingAddress() {
+        return shippingAddress;
+    }
+
+    public void setShippingAddress(com.example.brayandavid.homemedicines.Objects.shippingAddress shippingAddress) {
+        this.shippingAddress = shippingAddress;
     }
 
     public String getContactPhone() {
@@ -28,12 +33,11 @@ public class Compra {
         this.contactPhone = contactPhone;
     }
 
-    public String getDniNumbre() {
+    public int getDniNumber() {
         return dniNumber;
     }
 
-    public void setDniNumbre(String dniNumbre) {
-        this.dniNumber = dniNumbre;
+    public void setDniNumber(int dniNumber) {this.dniNumber = dniNumber;
     }
 
     public String getEmailAddress() {
