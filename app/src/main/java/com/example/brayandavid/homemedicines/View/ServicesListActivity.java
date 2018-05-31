@@ -14,7 +14,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.brayandavid.homemedicines.Conection.TaskImages;
 import com.example.brayandavid.homemedicines.Conection.TaskProducts;
@@ -26,12 +25,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ServicesListActivity extends AppCompatActivity {
+
     private boolean mTwoPane;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_servicios_list);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
@@ -109,9 +110,8 @@ public class ServicesListActivity extends AppCompatActivity {
             Product product = mValues.get(position);
             TaskImages taskImages = new TaskImages(holder.mIdView);
             taskImages.execute(product);
-            holder.titulo.setText(product.getName());
-            holder.mContentView.setText(product.getDescription());
-            holder.mdetalleView.setText(product.getVolume());
+            holder.mContentView.setText(product.getName());
+            holder.mdetalleView.setText(product.getDescription());
             holder.itemView.setTag(product);
             holder.itemView.setOnClickListener(mOnClickListener);
         }
@@ -125,25 +125,19 @@ public class ServicesListActivity extends AppCompatActivity {
             final ImageView mIdView;
             final TextView mContentView;
             final TextView mdetalleView;
-            final TextView titulo;
+
 
             ViewHolder(View view) {
                 super(view);
                 mIdView = (ImageView) view.findViewById(R.id.iv_avatar);
                 mContentView = (TextView) view.findViewById(R.id.ev_name);
                 mdetalleView = (TextView) view.findViewById(R.id.ev_txt);
-                titulo = (TextView) view.findViewById(R.id.tvTitulo);
+
             }
         }
     }
 
 
-
-
-
-    private void action(int resid) {
-        Toast.makeText(this, getText(resid), Toast.LENGTH_SHORT).show();
-    }
 
     public List<Product> getProductxxx() {
         List<Product> list = new ArrayList<>();

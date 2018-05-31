@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.brayandavid.homemedicines.Conection.TaskLogin;
 import com.example.brayandavid.homemedicines.Objects.Login;
+import com.example.brayandavid.homemedicines.View.AgregarActivity;
 import com.example.brayandavid.homemedicines.View.ServicesListActivity;
 
 import org.json.JSONException;
@@ -23,7 +24,7 @@ public class LoginUser extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (Security.getToken() != null)
-            startActivity(new Intent(LoginUser.this, ServicesListActivity.class));
+            startActivity(new Intent(LoginUser.this, AgregarActivity.class));
         setContentView(R.layout.activity_login_user);
         txtEmailLogin = (EditText) findViewById(R.id.txt_email_login);
         txtPasswordLogin = (EditText) findViewById(R.id.txt_pass_login);
@@ -36,11 +37,14 @@ public class LoginUser extends AppCompatActivity {
     public void btn_Login_Click(View v) throws JSONException {
         TaskLogin logenTask = new TaskLogin();
         Login login = new Login();
-        login.setPassword((txtPasswordLogin.getText().toString()));
-        login.setUser(txtEmailLogin.getText().toString());
+      //  login.setPassword((txtPasswordLogin.getText().toString()));
+        //login.setUser(txtEmailLogin.getText().toString());
+login.setUser("griticosuave@gmail.com");
+login.setPassword("contra");
         int code = TaskLogin.getCode();
         String  resul = null;
         try {
+
             resul = logenTask.execute(login).get();
         } catch (Exception e) {
             e.printStackTrace();
@@ -50,7 +54,7 @@ public class LoginUser extends AppCompatActivity {
         if (code == 200) {
             Intent h = new Intent(LoginUser.this, ServicesListActivity.class);
             JSONObject token = new JSONObject(resul);
-            Toast.makeText(this, "¡Login Successful! "+ code,
+            Toast.makeText(this, "¡Login Successful! ",
                     Toast.LENGTH_LONG).show();
             Security.setToken("Bearer " + token.getString("token"));
             startActivity(h);
