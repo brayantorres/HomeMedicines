@@ -11,7 +11,6 @@ import android.widget.Toast;
 import com.example.brayandavid.homemedicines.Conection.TaskLogin;
 import com.example.brayandavid.homemedicines.Objects.Login;
 import com.example.brayandavid.homemedicines.View.AgregarActivity;
-import com.example.brayandavid.homemedicines.View.ServicesListActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -52,7 +51,7 @@ login.setPassword("contra");
 
 
         if (code == 200) {
-            Intent h = new Intent(LoginUser.this, ServicesListActivity.class);
+            Intent h = new Intent(LoginUser.this, AgregarActivity.class);
             JSONObject token = new JSONObject(resul);
             Toast.makeText(this, "¡Login Successful! ",
                     Toast.LENGTH_LONG).show();

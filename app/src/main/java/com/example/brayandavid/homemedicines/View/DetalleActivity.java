@@ -30,33 +30,41 @@ public class DetalleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tenis);
-        //getIntent();
-        final Product thisArticulo = (Product) getIntent().getSerializableExtra("articulo");
-        thisTitulo = findViewById(R.id.tvThisTitulo);
-        thisSubtitulo = findViewById(R.id.tvThisSubtitulo);
-        thisPrecio = findViewById(R.id.tvThisPrecio);
-        firstImage = findViewById(R.id.ivFirstImage);
-        secondImage = findViewById(R.id.ivSecondImage);
-        thisDescripcion = findViewById(R.id.tvThisDescripcion);
-        agregar = findViewById(R.id.btnAgregar);
+        getIntent();
+        try {
 
-        agregar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.putExtra("returnArticulo",thisArticulo);
-                setResult(101, intent);
-                Toast.makeText(DetalleActivity.this, "¡Agregado! ",
-                        Toast.LENGTH_LONG).show();
-                finish();
-            }
-        });
-        thisTitulo.setText(thisArticulo.getName());
-        thisSubtitulo.setText(thisArticulo.getDescription());
-        thisPrecio.setText(Double.toString(thisArticulo.getEachPrice()));
 
-        TaskImages taskImages = new TaskImages(firstImage);
-        taskImages.execute(thisArticulo);
-        thisDescripcion.setText(thisArticulo.getVolume());
+            final Product thisArticulo = (Product) getIntent().getSerializableExtra("articulo");
+            thisTitulo = findViewById(R.id.tvThisTitulo);
+            thisSubtitulo = findViewById(R.id.tvThisSubtitulo);
+            thisPrecio = findViewById(R.id.tvThisPrecio);
+            firstImage = findViewById(R.id.ivFirstImage);
+            secondImage = findViewById(R.id.ivSecondImage);
+            thisDescripcion = findViewById(R.id.tvThisDescripcion);
+            agregar = findViewById(R.id.btnAgregar);
+
+            agregar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent();
+                    intent.putExtra("returnArticulo", thisArticulo);
+                    setResult(101, intent);
+                    Toast.makeText(DetalleActivity.this, "¡Agregado! ",
+                            Toast.LENGTH_LONG).show();
+                    finish();
+                }
+            });
+            thisTitulo.setText(thisArticulo.getName());
+            thisSubtitulo.setText(thisArticulo.getDescription());
+            thisPrecio.setText(Double.toString(thisArticulo.getEachPrice()));
+
+            TaskImages taskImages = new TaskImages(firstImage);
+            taskImages.execute(thisArticulo);
+            thisDescripcion.setText(thisArticulo.getVolume());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
-}
+
+    }
+

@@ -54,10 +54,10 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/ev_name"
+                    android:id="@+id/txtdescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Categoria"/>
+                    android:text=""/>
 
                 <TextView
                     android:id="@+id/ev_txt"
