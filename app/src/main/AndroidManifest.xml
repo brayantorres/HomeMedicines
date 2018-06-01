@@ -32,19 +32,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".View.DetalleActivity"></activity>
-        <activity
-            android:name=".View.ServicesListActivity"
-            android:label="@string/title_servicios_list"
-            android:theme="@style/AppTheme" />
-        <activity
-            android:name=".View.ServicesDetailActivity"
-            android:label="@string/title_servicios_detail"
-            android:parentActivityName=".View.ServicesListActivity"
-            android:theme="@style/AppTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.brayandavid.homemedicines.View.ServicesListActivity" />
-        </activity>
         <activity android:name=".PasswordChange" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -62,6 +49,7 @@
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity android:name=".Activity_compra"></activity>
+        <activity android:name=".View.CartActivity"></activity>
         <activity android:name=".View.AgregarActivity"></activity>
     </application>
 
