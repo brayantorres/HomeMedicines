@@ -130,7 +130,7 @@ public class ServicesListActivity extends AppCompatActivity {
             ViewHolder(View view) {
                 super(view);
                 mIdView = (ImageView) view.findViewById(R.id.iv_avatar);
-                mContentView = (TextView) view.findViewById(R.id.ev_name);
+                mContentView = (TextView) view.findViewById(R.id.txtdescription);
                 mdetalleView = (TextView) view.findViewById(R.id.ev_txt);
 
             }

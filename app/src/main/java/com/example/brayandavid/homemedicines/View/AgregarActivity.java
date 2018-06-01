@@ -42,10 +42,8 @@ public class AgregarActivity extends AppCompatActivity {
 
         TaskProducts task = new TaskProducts(this);
         try {
-            List<Product> products = task.execute().get();
-
-            ArticuloAdapter articuloAdapter = new ArticuloAdapter();
-            milista.setAdapter(articuloAdapter);
+            articulos = task.execute().get();
+            milista.setAdapter(new ArticuloAdapter());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -56,9 +54,13 @@ public class AgregarActivity extends AppCompatActivity {
         milista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(AgregarActivity.this, DetalleActivity.class);
-                intent.putExtra("producto", articulos.get(i));
-                startActivityForResult(intent, 100);
+                try {
+                    Intent intent = new Intent(AgregarActivity.this, DetalleActivity.class);
+                    intent.putExtra("articulo", articulos.get(i));
+                    startActivityForResult(intent, 100);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -100,27 +102,26 @@ public class AgregarActivity extends AppCompatActivity {
         @Override
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
             View vista = getLayoutInflater().inflate(R.layout.list, parent, false);
-            TaskProducts task = new TaskProducts(AgregarActivity.this);
-            try {
-                List<Product> products = task.execute().get();
 
-                         } catch (Exception e) {
-                e.printStackTrace();
-            }
             Product miarticulo = articulos.get(position);
 
-            TextView titulo = vista.findViewById(R.id.tvTitulo);
-            titulo.setText(miarticulo.getName());
+            try {
+                TextView titulo = vista.findViewById(R.id.tvTitulo);
+                titulo.setText(miarticulo.getName());
 
-            TextView subtitulo = vista.findViewById(R.id.ev_name);
-            subtitulo.setText(miarticulo.getDescription());
+                TextView subtitulo = vista.findViewById(R.id.tvDescripcion);
+                subtitulo.setText(miarticulo.getDescription());
 
-            TextView precio = vista.findViewById(R.id.ev_txt);
-            precio.setText(Double.toString(miarticulo.getEachPrice()));
+                TextView precio = vista.findViewById(R.id.tvSubtitulo);
+                precio.setText(Double.toString(miarticulo.getEachPrice()));
 
-            ImageView imagen = vista.findViewById(R.id.iv_avatar);
-            TaskImages taskImages = new TaskImages(imagen);
-            taskImages.execute(miarticulo);
+                ImageView imagen = vista.findViewById(R.id.ivImagen);
+                TaskImages taskImages = new TaskImages(imagen);
+                taskImages.execute(miarticulo);
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
             return vista;
         }
     }
