@@ -19,6 +19,7 @@ import com.example.brayandavid.homemedicines.Conection.TaskProducts;
 import com.example.brayandavid.homemedicines.Objects.Product;
 import com.example.brayandavid.homemedicines.R;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,6 +69,7 @@ public class AgregarActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(AgregarActivity.this, CartActivity.class);
+                intent.putExtra("carrito", (Serializable) lista_compras);
                 startActivityForResult(intent, 100);
             }
         });
