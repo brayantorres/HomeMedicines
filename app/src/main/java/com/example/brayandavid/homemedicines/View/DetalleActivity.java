@@ -18,18 +18,16 @@ public class DetalleActivity extends AppCompatActivity {
     TextView thisTitulo;
     TextView thisSubtitulo;
     TextView thisPrecio;
-
+    TextView thiscategory;
+    TextView thisCharacteristic;
     ImageView firstImage;
-    ImageView secondImage;
-
     TextView thisDescripcion;
-
     Button agregar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tenis);
+        setContentView(R.layout.activity_detalle);
         getIntent();
         try {
 
@@ -39,9 +37,10 @@ public class DetalleActivity extends AppCompatActivity {
             thisSubtitulo = findViewById(R.id.tvThisSubtitulo);
             thisPrecio = findViewById(R.id.tvThisPrecio);
             firstImage = findViewById(R.id.ivFirstImage);
-            secondImage = findViewById(R.id.ivSecondImage);
             thisDescripcion = findViewById(R.id.tvThisDescripcion);
             agregar = findViewById(R.id.btnAgregar);
+            thisCharacteristic = findViewById(R.id.tvcategoria);
+            thiscategory = findViewById(R.id.tvThisvolumen);
 
             agregar.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -57,10 +56,12 @@ public class DetalleActivity extends AppCompatActivity {
             thisTitulo.setText(thisArticulo.getName());
             thisSubtitulo.setText(thisArticulo.getDescription());
             thisPrecio.setText(Double.toString(thisArticulo.getEachPrice()));
-
             TaskImages taskImages = new TaskImages(firstImage);
             taskImages.execute(thisArticulo);
+            thiscategory.setText((CharSequence) thisArticulo.getCategory());
+            thisCharacteristic.setText(thisArticulo.getMedicalCharacteristics());
             thisDescripcion.setText(thisArticulo.getVolume());
+
         }catch (Exception e){
             e.printStackTrace();
         }

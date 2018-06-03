@@ -4,18 +4,14 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.example.brayandavid.homemedicines.Objects.Buyer;
-import com.example.brayandavid.homemedicines.Objects.Category;
 import com.example.brayandavid.homemedicines.Security;
-import com.loopj.android.http.HttpGet;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import cz.msebera.android.httpclient.HttpResponse;
 import cz.msebera.android.httpclient.client.HttpClient;
+import cz.msebera.android.httpclient.client.methods.HttpPost;
+import cz.msebera.android.httpclient.entity.StringEntity;
 import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
 import cz.msebera.android.httpclient.util.EntityUtils;
 
@@ -23,57 +19,45 @@ import cz.msebera.android.httpclient.util.EntityUtils;
  * Created by Kevin Ortiz on 15/03/2018.
  */
 
-public class TaskBuy extends AsyncTask<String, Integer, List<Buyer>>{
-static int code;
+public class TaskBuy extends AsyncTask<Buyer, Void, String> {
+    static int code;
 
-    public TaskBuy() {}
+    public TaskBuy() {
+    }
 
     @Override
-    protected List<Buyer> doInBackground(String... strings) {
+    protected String doInBackground(Buyer... buyers) {
         HttpClient httpClient = new DefaultHttpClient();
-        HttpGet del = new HttpGet("http://13.90.130.197/product/category/");
+        HttpPost del = new HttpPost("http://13.90.130.197/cart/pay");
         del.setHeader("content-type", "application/json");
         del.setHeader("Authorization", Security.getToken());
         try {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("fullName", buyers[0].getFullName() );
+            jsonObject.put("dniNumber", buyers[0].getDniNumber());
+            jsonObject.put("emailAddress", buyers[0].getEmailAddress());
+            jsonObject.put("contactPhone", buyers[0].getContactPhone());
+            jsonObject.put("merchantBuyerId", buyers[0].getMerchantBuyerId());
+            jsonObject.put("shippingAddress", buyers[0].getShippingAddress());
+            del.setEntity(new StringEntity(jsonObject.toString()));
             HttpResponse resp = httpClient.execute(del);
             String respStr = EntityUtils.toString(resp.getEntity());
+            code = resp.getStatusLine().getStatusCode();
+            return respStr;
 
-            JSONArray respJSON = new JSONArray(respStr);
-
-            List<Buyer> productsList = new ArrayList<>();
-
-            for (int i = 0; i < respJSON.length(); i++) {
-                JSONObject obj = respJSON.getJSONObject(i);
-
-                Buyer buyer = new Buyer();
-                buyer.setFullName(obj.getString("fullName"));
-                buyer.setContactPhone(obj.getString("contactPhone"));
-                buyer.setDniNumber(obj.getInt("dniNumber"));
-                buyer.setEmailAddress(obj.getString("emailAddress"));
-                buyer.setMerchantBuyerId(obj.getString("merchantBuyerId"));
-
-
-
-                JSONObject categoryJson = obj.getJSONObject("category");
-                Category category = new Category();
-                category.setId(categoryJson.getString("id"));
-                category.setName(categoryJson.getString("name"));
-
-
-                productsList.add(buyer);
-            }
-
-            return productsList;
         } catch (Exception ex) {
             Log.e("ServicioRest", "Error!", ex);
         }
-        return new ArrayList<>();
+        return "";
     }
 
-    public static int getCode() {return code;}
+    public static int getCode() {
+        return code;
+    }
 
-    public static void setCode(int code) {TaskBuy.code = code;}
-
+    public static void setCode(int code) {
+        TaskBuy.code = code;
+    }
 
 
 }

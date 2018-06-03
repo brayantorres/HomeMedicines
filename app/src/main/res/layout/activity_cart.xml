@@ -24,5 +24,10 @@
         android:textColor="#100"
         android:textSize="20sp"
         android:text="Total: $3000"/>
+    <Button
+        android:id="@+id/btnpagar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Comprar"/>
 
 </LinearLayout>
