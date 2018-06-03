@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.brayandavid.homemedicines.Activity_compra;
 import com.example.brayandavid.homemedicines.Objects.Product;
 import com.example.brayandavid.homemedicines.R;
 
@@ -25,6 +26,7 @@ public class CartActivity extends AppCompatActivity {
 
     Button borrar;
     TextView total;
+    Button btnpagar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +35,14 @@ public class CartActivity extends AppCompatActivity {
 
         borrar = findViewById(R.id.btnBorrar);
         total = findViewById(R.id.tvPrecioTotal);
-
+        btnpagar= findViewById(R.id.btnpagar);
+        btnpagar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent pagar = new  Intent(CartActivity.this, Activity_compra.class);
+                startActivity(pagar);
+            }
+        });
         listAdapter = findViewById(R.id.lvListCart);
         misarticulos = (ArrayList<Product>) getIntent().getSerializableExtra("carrito");
 
@@ -83,7 +92,7 @@ public class CartActivity extends AppCompatActivity {
 
             titulo.setText(miarticulo.getName());
             subtitulo.setText(miarticulo.getDescription());
-            precio.setText(miarticulo.getVolume());
+            precio.setText(Double.toString(miarticulo.getEachPrice()));
 
             borrar.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -18,22 +18,15 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scrollbarStyle="insideInset">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="32dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="25dp"
             android:orientation="vertical">
-
-            <EditText
-                android:id="@+id/txnombrecompleto"
-                android:layout_width="match_parent"
-                android:layout_height="69dp"
-                android:hint="@string/Fullname"
-                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/text_nombreuser"
@@ -43,14 +36,12 @@
                 android:textAlignment="center"
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold" />
-
             <EditText
-                android:id="@+id/txdni"
+                android:id="@+id/txnombrecompleto"
                 android:layout_width="match_parent"
                 android:layout_height="69dp"
-                android:hint="@string/Documentodeidentidad"
+                android:hint="@string/Fullname"
                 android:textStyle="bold"/>
-
             <TextView
                 android:id="@+id/text_documentouser"
                 android:layout_width="match_parent"
@@ -59,12 +50,11 @@
                 android:textAlignment="center"
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold" />
-
             <EditText
-                android:id="@+id/txnumerodecontacto"
+                android:id="@+id/txdni"
                 android:layout_width="match_parent"
                 android:layout_height="69dp"
-                android:hint="@string/Contactphone"
+                android:hint="@string/Documentodeidentidad"
                 android:textStyle="bold"/>
 
             <TextView
@@ -77,11 +67,10 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/txemaildecompra"
+                android:id="@+id/txnumerodecontacto"
                 android:layout_width="match_parent"
                 android:layout_height="69dp"
-                android:hint="@string/ingresa_ac_su_usuario_email"
-                android:inputType="textEmailAddress"
+                android:hint="@string/Contactphone"
                 android:textStyle="bold"/>
 
             <TextView
@@ -94,28 +83,13 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/txnombretitulartarjeta"
+                android:id="@+id/txemaildecompra"
                 android:layout_width="match_parent"
                 android:layout_height="69dp"
-                android:hint="@string/titulartajeta"
+                android:hint="@string/ingresa_ac_su_usuario_email"
+                android:inputType="textEmailAddress"
                 android:textStyle="bold"/>
 
-            <TextView
-                android:id="@+id/text_tarjetauser2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="NOMBRE TITULAR"
-                android:textAlignment="center"
-                android:textColor="@color/colorPrimary"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/txnumerotarjeta"
-                android:layout_width="match_parent"
-                android:layout_height="69dp"
-                android:hint="@string/numerotajeta"
-                android:inputType="number"
-                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/text_numerotarjetauser"
@@ -125,6 +99,30 @@
                 android:textAlignment="center"
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/txnumerotarjeta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/numerotajeta"
+                android:inputType="number"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/text_tarjetauser2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="NOMBRE TITULAR"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
+            <EditText
+                android:id="@+id/txnombretitulartarjeta"
+                android:layout_width="match_parent"
+                android:layout_height="69dp"
+                android:hint="@string/titulartajeta"
+                android:textStyle="bold"/>
+
+
 
             <EditText
                 android:id="@+id/txfechaexpiraciontarjeta"
@@ -271,8 +269,18 @@
                 android:textAlignment="center"
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold" />
-
+            <Button
+                android:id="@+id/btncomprar"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Comprar"
+                android:layout_marginEnd="25dp"
+                android:textColor="#F000"/>
         </LinearLayout>
+
     </ScrollView>
+
 
 </LinearLayout>
