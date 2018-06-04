@@ -1,10 +1,19 @@
 package com.example.brayandavid.homemedicines;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.example.brayandavid.homemedicines.Conection.TaskBuy;
+import com.example.brayandavid.homemedicines.Objects.Buyer;
+import com.example.brayandavid.homemedicines.Objects.Creditcard;
+import com.example.brayandavid.homemedicines.Objects.Pay;
+import com.example.brayandavid.homemedicines.Objects.shippingAddress;
+
+import java.util.concurrent.ExecutionException;
 
 public class Activity_compra extends AppCompatActivity {
 EditText txnombrecompleto;
@@ -48,7 +57,46 @@ Button btncomprar;
         btncomprar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                TaskBuy taskBuy = new TaskBuy();
+                Pay pay = new Pay();
+                Buyer buyer = new Buyer();
+                buyer.setContactPhone(buyer.getContactPhone());
+                buyer.setDniNumber(buyer.getDniNumber());
+                buyer.setEmailAddress(buyer.getEmailAddress());
+                buyer.setShippingAddress(buyer.getShippingAddress());
+                buyer.setMerchantBuyerId(buyer.getMerchantBuyerId());
+                buyer.setFullName(buyer.getFullName());
+                pay.setBuyer(buyer);
+                shippingAddress adress = new shippingAddress();
+                adress.setCity(adress.getCity());
+                adress.setCountry(adress.getCountry());
+                adress.setPhone(adress.getPhone());
+                adress.setPostalCode(adress.getPostalCode());
+                adress.setState(adress.getState());
+                adress.setStreet1(adress.getStreet1());
+                adress.setStreet2(adress.getStreet2());
+                pay.setShippingAddress(adress);
+                Creditcard creditcard = new Creditcard();
+                creditcard.setExpirationDate(creditcard.getExpirationDate());
+                creditcard.setName(creditcard.getName());
+                creditcard.setNumber(creditcard.getNumber());
+                creditcard.setSecurityCode(creditcard.getSecurityCode());
+                pay.setCreditcard(creditcard);
+                pay.setPaymentMethod(pay.getPaymentMethod());
+                pay.setUser(pay.getUser());
+                int code = TaskBuy.getCode();
+                String result = null;
+                try {
+                    result = taskBuy.execute(pay).get();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+
+                Toast.makeText(Activity_compra.this, code+" ¡Compra Exitosa! ",
+                            Toast.LENGTH_LONG).show();
+
             }
         });
     }

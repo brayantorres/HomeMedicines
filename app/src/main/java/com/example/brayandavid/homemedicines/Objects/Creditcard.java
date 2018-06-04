@@ -10,19 +10,10 @@ public class Creditcard {
     String name;
     String number;
     String securityCode;
-    String paymentMethod;
-    shippingAddress  shippingAddress;
 
     public Creditcard() {
     }
 
-    public com.example.brayandavid.homemedicines.Objects.shippingAddress getShippingAddress() {
-        return shippingAddress;
-    }
-
-    public void setShippingAddress(com.example.brayandavid.homemedicines.Objects.shippingAddress shippingAddress) {
-        this.shippingAddress = shippingAddress;
-    }
 
     public String getExpirationDate() {
         return expirationDate;
@@ -54,13 +45,5 @@ public class Creditcard {
 
     public void setSecurityCode(String securityCode) {
         this.securityCode = securityCode;
-    }
-
-    public String getPaymentMethod() {
-        return paymentMethod;
-    }
-
-    public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
     }
 }
