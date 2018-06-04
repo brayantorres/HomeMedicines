@@ -1,11 +1,10 @@
 package com.example.brayandavid.homemedicines.Objects;
 
 /**
- * Created by brayandavid on 20/05/2018.
+ * Created by Kevin Ortiz on 6/3/2018.
  */
 
-public class shippingAddress {
-
+public class Address {
     String city;
     String country;
     String phone;
@@ -13,21 +12,6 @@ public class shippingAddress {
     String state;
     String street1;
     String street2;
-
-    public shippingAddress(String city, String country, String phone, String postalCode, String state, String street1,
-                           String street2) {
-        this.city = city;
-        this.country = country;
-        this.phone = phone;
-        this.postalCode = postalCode;
-        this.state = state;
-        this.street1 = street1;
-        this.street2 = street2;
-    }
-
-    public shippingAddress() {
-
-    }
 
     public String getCity() {
         return city;
@@ -85,4 +69,6 @@ public class shippingAddress {
         this.street2 = street2;
     }
 
+    public Address() {
+    }
 }
