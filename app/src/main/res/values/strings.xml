@@ -44,5 +44,13 @@
     <string name="Direccion1">Ingrese su Dirección</string>
     <string name="Direccion2">Ingrese su Dirección</string>
 
+    <string-array name="map_types_list">
+        <item>None</item>
+        <item>Normal</item>
+        <item>Satellite</item>
+        <item>Hybrid</item>
+        <item>Terrain</item>
+    </string-array>
+
 
 </resources>
