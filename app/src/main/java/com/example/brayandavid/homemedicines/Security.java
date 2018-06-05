@@ -7,6 +7,18 @@ package com.example.brayandavid.homemedicines;
 public class Security {
 
     private static String token;
+    private static String usuario;
+
+    public Security() {
+    }
+
+    public static String getUsuario() {
+        return usuario;
+    }
+
+    public static void setUsuario(String usuario) {
+        Security.usuario = usuario;
+    }
 
     public static String getToken() {
         return token;

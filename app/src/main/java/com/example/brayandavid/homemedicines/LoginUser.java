@@ -36,12 +36,15 @@ public class LoginUser extends AppCompatActivity {
     public void btn_Login_Click(View v) throws JSONException {
         TaskLogin logenTask = new TaskLogin();
         Login login = new Login();
-      //  login.setPassword((txtPasswordLogin.getText().toString()));
-        //login.setUser(txtEmailLogin.getText().toString());
-login.setUser("griticosuave@gmail.com");
-login.setPassword("contra");
+
+        txtEmailLogin.setText("griticosuave@gmail.com");
+        txtPasswordLogin.setText("contra");
+
+        login.setPassword((txtPasswordLogin.getText().toString()));
+        login.setUser(txtEmailLogin.getText().toString());
+
         int code = TaskLogin.getCode();
-        String  resul = null;
+        String resul = null;
         try {
 
             resul = logenTask.execute(login).get();
@@ -56,6 +59,7 @@ login.setPassword("contra");
             Toast.makeText(this, "¡Login Successful! ",
                     Toast.LENGTH_LONG).show();
             Security.setToken("Bearer " + token.getString("token"));
+            Security.setUsuario(txtEmailLogin.getText().toString());
             startActivity(h);
         }
         if (code == 406) {
