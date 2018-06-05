@@ -9,7 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.brayandavid.homemedicines.Conection.TaskAddCar;
 import com.example.brayandavid.homemedicines.Conection.TaskImages;
+import com.example.brayandavid.homemedicines.Objects.Item;
 import com.example.brayandavid.homemedicines.Objects.Product;
 import com.example.brayandavid.homemedicines.R;
 
@@ -23,6 +25,7 @@ public class DetalleActivity extends AppCompatActivity {
     ImageView firstImage;
     TextView thisDescripcion;
     Button agregar;
+    Product product;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +35,7 @@ public class DetalleActivity extends AppCompatActivity {
         try {
 
 
-            final Product thisArticulo = (Product) getIntent().getSerializableExtra("articulo");
+            product = (Product) getIntent().getSerializableExtra("articulo");
             thisTitulo = findViewById(R.id.tvThisTitulo);
             thisSubtitulo = findViewById(R.id.tvThisSubtitulo);
             thisPrecio = findViewById(R.id.tvThisPrecio);
@@ -46,21 +49,33 @@ public class DetalleActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent();
-                    intent.putExtra("returnArticulo", thisArticulo);
+                    intent.putExtra("returnArticulo", product);
                     setResult(101, intent);
                     Toast.makeText(DetalleActivity.this, "¡Agregado! ",
                             Toast.LENGTH_LONG).show();
+                    TaskAddCar taskAddCar = new TaskAddCar();
+                    Item item = new Item();
+                    item.setProduct(product);
+                    item.setCantidad(1);
+                   int code=  taskAddCar.getCode();
+                    String  resul = null;
+                    try {
+
+                        resul = taskAddCar.execute(item).get();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     finish();
                 }
             });
-            thisTitulo.setText(thisArticulo.getName());
-            thisSubtitulo.setText(thisArticulo.getDescription());
-            thisPrecio.setText(Double.toString(thisArticulo.getEachPrice()));
+            thisTitulo.setText(product.getName());
+            thisSubtitulo.setText(product.getDescription());
+            thisPrecio.setText(Double.toString(product.getEachPrice()));
             TaskImages taskImages = new TaskImages(firstImage);
-            taskImages.execute(thisArticulo);
-            thiscategory.setText((CharSequence) thisArticulo.getCategory());
-            thisCharacteristic.setText(thisArticulo.getMedicalCharacteristics());
-            thisDescripcion.setText(thisArticulo.getVolume());
+            taskImages.execute(product);
+            thiscategory.setText((CharSequence) product.getCategory());
+            thisCharacteristic.setText(product.getMedicalCharacteristics());
+            thisDescripcion.setText(product.getVolume());
 
         }catch (Exception e){
             e.printStackTrace();

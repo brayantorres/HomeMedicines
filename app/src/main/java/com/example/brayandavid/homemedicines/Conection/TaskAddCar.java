@@ -3,9 +3,10 @@ package com.example.brayandavid.homemedicines.Conection;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.example.brayandavid.homemedicines.Objects.Pay;
+import com.example.brayandavid.homemedicines.Objects.Item;
 import com.example.brayandavid.homemedicines.Security;
-import com.google.gson.Gson;
+
+import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.HttpResponse;
 import cz.msebera.android.httpclient.client.HttpClient;
@@ -15,34 +16,42 @@ import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
 import cz.msebera.android.httpclient.util.EntityUtils;
 
 /**
- * Created by Kevin Ortiz on 15/03/2018.
+ * Created by Kevin Ortiz on 6/4/2018.
  */
 
-public class TaskBuy extends AsyncTask<Pay, Void, String> {
+public class TaskAddCar extends AsyncTask<Item, Void, String> {
     static int code;
 
-    public TaskBuy() {
+    public TaskAddCar() {
     }
 
     @Override
-    protected String doInBackground(Pay... pays) {
+    protected String doInBackground(Item... items) {
         HttpClient httpClient = new DefaultHttpClient();
-        HttpPost del = new HttpPost("http://13.90.130.197/cart/pay");
-        del.setHeader("content-type", "application/json");
-        del.setHeader("Authorization", Security.getToken());
+        HttpPost add = new HttpPost("http://13.90.130.197/cart/add-product/" + Security.getUsuario());
+        add.setHeader("content-type", "application/json");
+        add.setHeader("Authorization", Security.getToken());
+
         try {
-            Pay pay = pays[0];
-            Gson gson = new Gson();
-            String json = gson.toJson(pay);
-            del.setEntity(new StringEntity(json));
-            HttpResponse resp = httpClient.execute(del);
+            JSONObject item = new JSONObject();
+            item.put("quantity", items[0].getCantidad());
+            JSONObject product = new JSONObject();
+            product.put("id", items[0].getProduct().getId());
+            product.put("eachPrice", items[0].getProduct().getEachPrice());
+
+            item.put("product", product);
+
+            add.setEntity(new StringEntity(item.toString()));
+            HttpResponse resp = httpClient.execute(add);
             String respStr = EntityUtils.toString(resp.getEntity());
             code = resp.getStatusLine().getStatusCode();
             return respStr;
+
         } catch (Exception ex) {
             Log.e("ServicioRest", "Error!", ex);
         }
-        return "";
+
+        return null;
     }
 
     public static int getCode() {
@@ -50,8 +59,6 @@ public class TaskBuy extends AsyncTask<Pay, Void, String> {
     }
 
     public static void setCode(int code) {
-        TaskBuy.code = code;
+        TaskAddCar.code = code;
     }
-
-
 }

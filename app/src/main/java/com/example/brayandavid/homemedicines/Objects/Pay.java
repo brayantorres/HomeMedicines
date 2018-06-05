@@ -10,6 +10,15 @@ public class Pay {
     private String paymentMethod;
     shippingAddress shippingAddress;
     String user;
+    Boolean test;
+
+    public Boolean getTest() {
+        return test;
+    }
+
+    public void setTest(Boolean test) {
+        this.test = test;
+    }
 
     public Pay() {
     }

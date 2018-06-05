@@ -7,7 +7,7 @@ package com.example.brayandavid.homemedicines.Objects;
 public class Buyer {
 
     String contactPhone;
-    int dniNumber;
+    String dniNumber;
     String emailAddress;
     String fullName;
     String merchantBuyerId;
@@ -33,11 +33,11 @@ public class Buyer {
         this.contactPhone = contactPhone;
     }
 
-    public int getDniNumber() {
+    public String getDniNumber() {
         return dniNumber;
     }
 
-    public void setDniNumber(int dniNumber) {this.dniNumber = dniNumber;
+    public void setDniNumber(String dniNumber) {this.dniNumber = dniNumber;
     }
 
     public String getEmailAddress() {
