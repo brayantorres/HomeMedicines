@@ -1,16 +1,8 @@
 package com.example.brayandavid.homemedicines;
 
-import android.content.Context;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Spinner;
+import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -19,24 +11,40 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Spinner;
+
+
+
+import java.util.HashMap;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, AdapterView.OnItemSelectedListener {
 
     private Spinner mMapTypeSelector;
     private int mMapTypes[] = {
-            GoogleMap.MAP_TYPE_NONE,
             GoogleMap.MAP_TYPE_NORMAL,
             GoogleMap.MAP_TYPE_SATELLITE,
             GoogleMap.MAP_TYPE_HYBRID,
             GoogleMap.MAP_TYPE_TERRAIN
     };
 
+    private static final String TAG = MapsActivity.class.getSimpleName();
+    private HashMap<String, Marker> mMarkers = new HashMap<>();
     private GoogleMap mMap;
-    private Marker marcador;
-    double lat = 0.0;
-    double lng = 0.0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,68 +63,84 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        // Authenticate with Firebase when the Google map is loaded
         mMap = googleMap;
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }
-        mMap.setMyLocationEnabled(true);
-        miUbicacion();
+        mMap.setMaxZoomPreference(19);
+        loginToFirebase();
     }
 
-    private void agregarmarcador(double lat, double lng) {
-        LatLng coordenadas = new LatLng(lat, lng);
-        CameraUpdate miUbicacion = CameraUpdateFactory.newLatLngZoom(coordenadas, 16);
-        if (marcador != null) marcador.remove();
-        marcador = mMap.addMarker(new MarkerOptions()
-                .position(coordenadas).title("Mi Posición Actual")
-                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher)));
-        mMap.animateCamera(miUbicacion);
+    private void loginToFirebase() {
+        String email = getString(R.string.firebase_email);
+        String password = getString(R.string.firebase_password);
+        // Authenticate with Firebase and subscribe to updates
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(
+                email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    subscribeToUpdates();
+                    Log.d(TAG, "firebase auth success");
+                } else {
+                    Log.d(TAG, "firebase auth failed");
+                }
+            }
+        });
     }
 
-    private void actualizarUbicacion(Location location) {
-        if (location != null) {
-            lat = location.getLatitude();
-            lng = location.getLongitude();
-            agregarmarcador(lat, lng);
-        }
+    private void subscribeToUpdates() {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(getString(R.string.firebase_path));
+        ref.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
+                setMarker(dataSnapshot);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String previousChildName) {
+                setMarker(dataSnapshot);
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String previousChildName) {
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Log.d(TAG, "Failed to read value.", error.toException());
+            }
+        });
     }
 
-    LocationListener locListener = new LocationListener() {
-        @Override
-        public void onLocationChanged(Location location) {
-            actualizarUbicacion(location);
+    private void setMarker(DataSnapshot dataSnapshot) {
+        // When a location update is received, put or update
+        // its value in mMarkers, which contains all the markers
+        // for locations received, so that we can build the
+        // boundaries required to show them all on the map at once
+        String key = dataSnapshot.getKey();
+        HashMap<String, Object> value = (HashMap<String, Object>) dataSnapshot.getValue();
+        double lat = Double.parseDouble(value.get("latitude").toString());
+        double lng = Double.parseDouble(value.get("longitude").toString());
+        LatLng location = new LatLng(lat, lng);
+        if (!mMarkers.containsKey(key)) {
+            mMarkers.put(key, mMap.addMarker(new MarkerOptions().title(key).position(location).icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher_carro))));
+        } else {
+            mMarkers.get(key).setPosition(location);
         }
-
-        @Override
-        public void onStatusChanged(String s, int i, Bundle bundle) {
-
+        LatLngBounds.Builder builder = new LatLngBounds.Builder();
+        for (Marker marker : mMarkers.values()) {
+            builder.include(marker.getPosition());
         }
-
-        @Override
-        public void onProviderEnabled(String s) {
-
-        }
-
-        @Override
-        public void onProviderDisabled(String s) {
-
-        }
-    };
-
-    private void miUbicacion() {
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }
-        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        actualizarUbicacion(location);
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 11000,0, locListener);
+        mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(builder.build(), 300));
     }
+
 
     @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
         mMap.setMapType(mMapTypes[position]);
-
     }
 
     @Override

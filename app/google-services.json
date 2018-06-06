@@ -15,12 +15,24 @@
       },
       "oauth_client": [
         {
+          "client_id": "998628470403-r2tjubpji4gp8atc5krc9hfmg9mghsp6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.brayandavid.homemedicines",
+            "certificate_hash": "92af19574464c212eae596c5f29ccb244ede71d3"
+          }
+        },
+        {
           "client_id": "998628470403-dt6se2t5brslm23g1k6spg2d38mdopmm.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.brayandavid.homemedicines",
             "certificate_hash": "b554833f0479fe0037dfa18a99169c7c03206a4d"
           }
+        },
+        {
+          "client_id": "998628470403-cm2enovc8t0lspsda7939nubl0kk945a.apps.googleusercontent.com",
+          "client_type": 3
         },
         {
           "client_id": "998628470403-cm2enovc8t0lspsda7939nubl0kk945a.apps.googleusercontent.com",
