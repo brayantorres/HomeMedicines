@@ -36,10 +36,6 @@ public class LoginUser extends AppCompatActivity {
     public void btn_Login_Click(View v) throws JSONException {
         TaskLogin logenTask = new TaskLogin();
         Login login = new Login();
-
-        txtEmailLogin.setText("griticosuave@gmail.com");
-        txtPasswordLogin.setText("contra");
-
         login.setPassword((txtPasswordLogin.getText().toString()));
         login.setUser(txtEmailLogin.getText().toString());
 
@@ -51,7 +47,6 @@ public class LoginUser extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
 
         if (code == 200) {
             Intent h = new Intent(LoginUser.this, AgregarActivity.class);
