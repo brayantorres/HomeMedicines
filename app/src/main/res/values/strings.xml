@@ -31,23 +31,18 @@
     <string name="title_activity_maps">Map</string>
 
     <string name="Fullname">Nombre Completo</string>
-    <string name="Documentodeidentidad">Dni</string>
+    <string name="Documentodeidentidad">Documento De Identidad</string>
     <string name="Contactphone">Número de teléfono</string>
-    <string name="titulartajeta">Nombre de Titular Tarjeta de Crédito</string>
+    <string name="titulartajeta">Titular de la Tarjeta</string>
     <string name="numerotajeta">Número Tarjeta de Crédito</string>
-    <string name="fechaexpiracion">fecha Expiración Tarjeta de Crédito</string>
-    <string name="codigoseguridadtarjeta">Código Seguridad Tarjeta de Crédito</string>
+    <string name="fechaexpiracion">Fecha de Expiración de la Tarjeta</string>
+    <string name="codigoseguridadtarjeta">Código de Seguridad de la Tarjeta</string>
     <string name="Ciudad">Ingrese su Ciudad</string>
     <string name="Pais">Ingrese su País</string>
     <string name="Estado">Ingrese su Estado</string>
     <string name="Codigopostal">Ingrese Código Postal</string>
     <string name="Direccion1">Ingrese su Dirección</string>
     <string name="Direccion2">Ingrese su Dirección</string>
-
-    <string name="title_activity_display">Transport Display</string>
-    <string name="firebase_path" translatable="false">locations</string>
-    <string name="firebase_email" translatable="false">orgasmitolento69@gmail.com</string>
-    <string name="firebase_password" translatable="false">$uP3rMeg@</string>
 
     <string-array name="map_types_list">
         <item>None</item>

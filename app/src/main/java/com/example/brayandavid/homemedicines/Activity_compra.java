@@ -14,95 +14,80 @@ import com.example.brayandavid.homemedicines.Objects.Creditcard;
 import com.example.brayandavid.homemedicines.Objects.Pay;
 import com.example.brayandavid.homemedicines.Objects.shippingAddress;
 
-import java.util.concurrent.ExecutionException;
+import org.json.JSONObject;
 
 public class Activity_compra extends AppCompatActivity {
-EditText txnombrecompleto;
-EditText txdni;
-EditText txnumerodecontacto;
-EditText txemaildecompra;
-EditText txnombretitulartarjeta;
-EditText txnumerotarjeta;
-EditText txfechaexpiraciontarjeta;
-EditText txcodigoseguridadtarjeta;
-EditText txnombreciudad;
-EditText txnombrepais;
-EditText txnombreestado;
-EditText txnumerodetelefonousuario;
-EditText txcodigopostal;
-EditText txdireccion1;
-EditText txdireccion2;
-Button btncomprar;
+    EditText txdni;
+    EditText txnumerodecontacto;
+    EditText txnombretitulartarjeta;
+    EditText txnumerotarjeta;
+    EditText txfechaexpiraciontarjeta;
+    EditText txcodigoseguridadtarjeta;
+    EditText txnombreciudad;
+    EditText txdireccion1;
+    Button btncomprar;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compra);
-        txnombrecompleto =  findViewById(R.id.txnombrecompleto);
-        txdni =  findViewById(R.id.txdni);
-        txnumerodecontacto =  findViewById(R.id.txnumerodecontacto);
-        txemaildecompra =  findViewById(R.id.txemaildecompra);
+        txdni = findViewById(R.id.txdni);
+        txnumerodecontacto = findViewById(R.id.txnumerodecontacto);
+        txnombreciudad = findViewById(R.id.txnombreciudad);
+        txdireccion1 = findViewById(R.id.txdireccion1);
         txnombretitulartarjeta = findViewById(R.id.txnombretitulartarjeta);
         txnumerotarjeta = findViewById(R.id.txnumerotarjeta);
         txfechaexpiraciontarjeta = findViewById(R.id.txfechaexpiraciontarjeta);
         txcodigoseguridadtarjeta = findViewById(R.id.txcodigoseguridadtarjeta);
-        txnombreciudad = findViewById(R.id.txnombreciudad);
-        txnombrepais = findViewById(R.id.txnombrepais);
-        txnombreestado = findViewById(R.id.txnombreestado);
-        txnumerodetelefonousuario = findViewById(R.id.txnumerodetelefonousuario);
-        txcodigopostal = findViewById(R.id.txcodigopostal);
-        txdireccion1 = findViewById(R.id.txdireccion1);
-        txdireccion2 = findViewById(R.id.txdireccion2);
         btncomprar = findViewById(R.id.btncomprar);
+
+
         btncomprar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 TaskBuy taskBuy = new TaskBuy();
                 Pay pay = new Pay();
                 Buyer buyer = new Buyer();
-                buyer.setContactPhone(buyer.getContactPhone());
-                buyer.setDniNumber(buyer.getDniNumber());
-                buyer.setEmailAddress(buyer.getEmailAddress());
-                buyer.setShippingAddress(buyer.getShippingAddress());
-                buyer.setMerchantBuyerId(buyer.getMerchantBuyerId());
-                buyer.setFullName(buyer.getFullName());
+                buyer.setContactPhone(txnumerodecontacto.getText().toString());
+                buyer.setDniNumber(txdni.getText().toString());
+                buyer.setEmailAddress(Security.getUsuario());
+                buyer.setMerchantBuyerId("--");
+                buyer.setFullName(Security.getUsuario());
                 pay.setBuyer(buyer);
                 shippingAddress adress = new shippingAddress();
-                adress.setCity(adress.getCity());
-                adress.setCountry(adress.getCountry());
-                adress.setPhone(adress.getPhone());
-                adress.setPostalCode(adress.getPostalCode());
-                adress.setState(adress.getState());
-                adress.setStreet1(adress.getStreet1());
-                adress.setStreet2(adress.getStreet2());
+                adress.setCity(txnombreciudad.getText().toString());
+                adress.setCountry("Colombia");
+                adress.setPhone(txnumerodecontacto.getText().toString());
+                adress.setPostalCode("--");
+                adress.setState("--");
+                adress.setStreet1(txdireccion1.getText().toString());
+                adress.setStreet2(txdireccion1.getText().toString());
+                buyer.setShippingAddress(adress);
                 pay.setShippingAddress(adress);
                 Creditcard creditcard = new Creditcard();
-                creditcard.setExpirationDate(creditcard.getExpirationDate());
-                creditcard.setName(creditcard.getName());
-                creditcard.setNumber(creditcard.getNumber());
-                creditcard.setSecurityCode(creditcard.getSecurityCode());
+                creditcard.setExpirationDate(txfechaexpiraciontarjeta.getText().toString());
+                creditcard.setName(txnombretitulartarjeta.getText().toString());
+                creditcard.setNumber(txnumerotarjeta.getText().toString());
+                creditcard.setSecurityCode(txcodigoseguridadtarjeta.getText().toString());
                 pay.setCreditcard(creditcard);
-                pay.setPaymentMethod(pay.getPaymentMethod());
-                pay.setUser(pay.getUser());
+                pay.setPaymentMethod("PSE");
+                pay.setUser(Security.getUsuario());
+                pay.setTest(true);
                 int code = TaskBuy.getCode();
                 String result = null;
                 try {
                     result = taskBuy.execute(pay).get();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (ExecutionException e) {
+                    JSONObject compra = new JSONObject(result);
+                    Security.setPedido(compra.getString("message"));
+                    String tracking = Security.getPedido();
+                    Toast.makeText(Activity_compra.this, " ¡Compra Exitosa! ",
+                            Toast.LENGTH_LONG).show();
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
-
-                Toast.makeText(Activity_compra.this, code+" ¡Compra Exitosa! ",
-                            Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(Activity_compra.this,MapsActivity.class );
+                Intent intent = new Intent(Activity_compra.this, MapsActivity.class);
                 startActivity(intent);
-
-                Intent map = new Intent(Activity_compra.this,MapsActivity.class);
-                startActivity(map);
-
             }
         });
     }

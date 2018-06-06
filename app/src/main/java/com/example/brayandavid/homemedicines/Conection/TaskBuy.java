@@ -39,7 +39,7 @@ public class TaskBuy extends AsyncTask<Pay, Void, String> {
             String respStr = EntityUtils.toString(resp.getEntity());
             code = resp.getStatusLine().getStatusCode();
             return respStr;
-        } catch (Exception ex) {
+                    } catch (Exception ex) {
             Log.e("ServicioRest", "Error!", ex);
         }
         return "";

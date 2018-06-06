@@ -60,7 +60,6 @@ public class DetalleActivity extends AppCompatActivity {
                    int code=  taskAddCar.getCode();
                     String  resul = null;
                     try {
-
                         resul = taskAddCar.execute(item).get();
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -73,10 +72,9 @@ public class DetalleActivity extends AppCompatActivity {
             thisPrecio.setText(Double.toString(product.getEachPrice()));
             TaskImages taskImages = new TaskImages(firstImage);
             taskImages.execute(product);
-            thiscategory.setText((CharSequence) product.getCategory());
-            thisCharacteristic.setText(product.getMedicalCharacteristics());
+            thiscategory.setText(product.getVolume());
+            thisCharacteristic.setText(product.getMedical_characteristics());
             thisDescripcion.setText(product.getVolume());
-
         }catch (Exception e){
             e.printStackTrace();
         }

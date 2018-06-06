@@ -8,6 +8,15 @@ public class Security {
 
     private static String token;
     private static String usuario;
+    private static String pedido;
+
+    public static String getPedido() {
+        return pedido;
+    }
+
+    public static void setPedido(String pedido) {
+        Security.pedido = pedido;
+    }
 
     public Security() {
     }
