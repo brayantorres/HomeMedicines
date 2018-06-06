@@ -60,6 +60,7 @@ public class LoginUser extends AppCompatActivity {
                     Toast.LENGTH_LONG).show();
             Security.setToken("Bearer " + token.getString("token"));
             Security.setUsuario(txtEmailLogin.getText().toString());
+            Security.setContraseña(txtPasswordLogin.getText().toString());
             startActivity(h);
         }
         if (code == 406) {

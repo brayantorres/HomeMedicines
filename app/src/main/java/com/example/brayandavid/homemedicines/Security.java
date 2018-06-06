@@ -9,6 +9,15 @@ public class Security {
     private static String token;
     private static String usuario;
     private static String pedido;
+    private static String contraseña;
+
+    public static String getContraseña() {
+        return contraseña;
+    }
+
+    public static void setContraseña(String contraseña) {
+        Security.contraseña = contraseña;
+    }
 
     public static String getPedido() {
         return pedido;
