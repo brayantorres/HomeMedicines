@@ -100,6 +100,9 @@ Button btncomprar;
                 Intent intent = new Intent(Activity_compra.this,MapsActivity.class );
                 startActivity(intent);
 
+                Intent map = new Intent(Activity_compra.this,MapsActivity.class);
+                startActivity(map);
+
             }
         });
     }
