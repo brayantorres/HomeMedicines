@@ -20,16 +20,14 @@
         <activity
             android:name=".splashscreen"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
-        </activity>
-        <activity android:name=".Registro" />
-        <activity android:name=".LoginUser">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Registro" />
+        <activity android:name=".LoginUser"></activity>
         <activity android:name=".View.DetalleActivity"></activity>
         <activity android:name=".PasswordChange" />
         <!--
@@ -43,7 +41,6 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
@@ -51,5 +48,4 @@
         <activity android:name=".View.CartActivity"></activity>
         <activity android:name=".View.AgregarActivity"></activity>
     </application>
-
 </manifest>
