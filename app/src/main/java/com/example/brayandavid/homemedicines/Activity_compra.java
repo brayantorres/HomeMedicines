@@ -1,5 +1,6 @@
 package com.example.brayandavid.homemedicines;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -96,6 +97,9 @@ Button btncomprar;
 
                 Toast.makeText(Activity_compra.this, code+" ¡Compra Exitosa! ",
                             Toast.LENGTH_LONG).show();
+
+                Intent map = new Intent(Activity_compra.this,MapsActivity.class);
+                startActivity(map);
 
             }
         });
