@@ -97,6 +97,8 @@ Button btncomprar;
 
                 Toast.makeText(Activity_compra.this, code+" ¡Compra Exitosa! ",
                             Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(Activity_compra.this,MapsActivity.class );
+                startActivity(intent);
 
                 Intent map = new Intent(Activity_compra.this,MapsActivity.class);
                 startActivity(map);
