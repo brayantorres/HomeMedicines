@@ -67,6 +67,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
         mMap.setMaxZoomPreference(19);
         loginToFirebase();
+
+        // Agregar Marcador
+        LatLng unac = new LatLng(6.241252700493081, -75.60989290453495);
+        mMap.addMarker(new MarkerOptions()
+                .position(unac)
+                .title("Universidad Adventista")
+                .snippet("info detallada"));
     }
 
     private void loginToFirebase() {
